@@ -1,0 +1,109 @@
+$black-section = black
+
+*
+  box-sizing border-box !important
+
+iframe
+  border none
+
+section
+  padding-top 50px
+  padding-bottom 50px
+
+section.white
+  background $body-bg
+  color $text-color
+
+section.black
+  background $black-section
+  color $body-bg
+
+.nav-pills
+  a
+    box-sizing border-box !important
+    border-radius 0 !important
+    color white !important
+    border 2px solid transparent
+    cursor pointer
+    &:hover
+      background $black-section !important
+      text-decoration underline !important
+
+  .active
+    a 
+      background $black-section !important
+      border-color white
+
+.navbar-black
+  left 0
+  right 0
+  background $black-section !important
+  border 0 !important
+  height 100px
+  *
+    color white !important
+  .navbar-brand
+    height 100px
+    padding 0
+    margin 0 !important
+    line-height 90px
+    font-weight 300
+    font-size 90px
+
+  .navbar-nav
+    a
+      line-height 100px !important
+      padding-top 0
+      padding-bottom 0
+      box-sizing border-box
+    .active > a
+      border 1px solid white
+
+  &.affix-top
+    top 50px
+    position absolute
+
+  &.affix
+    top 0
+    position fixed
+
+$my-carousel-height = 350px
+
+.slide-img
+  float left
+  width 40%
+  padding-right $grid-gutter-width
+
+.slide-txt
+  float left
+  width 60%
+
+
+.my-carousel-switch
+  display block
+  margin-top ($my-carousel-height / 3)
+  img
+    height ($my-carousel-height / 3)
+  &:active
+    opacity 0.5
+
+.my-carousel-main
+  height $my-carousel-height
+
+.my-carousel-indicators
+  margin-bottom $grid-gutter-width
+
+.bg-spacer
+  height 500px
+  background-image url('../images/morning-lake.png')
+  background-size cover
+  background-position center center
+
+.bg-video
+  width 100%
+  position absolute
+  top 0
+  left 0
+  right 0
+  z-index -1
+  display block
