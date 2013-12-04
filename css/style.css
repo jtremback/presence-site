@@ -401,7 +401,7 @@ h6,
 .h5,
 .h6 {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.1;
 }
 h1 small,
@@ -5091,6 +5091,9 @@ td.visible-print {
   -moz-box-sizing: border-box !important;
   box-sizing: border-box !important;
 }
+html {
+  min-width: 400px;
+}
 iframe {
   border: none;
 }
@@ -5137,7 +5140,7 @@ section.black {
   padding: 0;
   margin: 0 !important;
   line-height: 90px;
-  font-weight: 300;
+  font-weight: 100 !important;
   font-size: 90px;
 }
 .navbar-black .navbar-nav a {
@@ -5158,15 +5161,6 @@ section.black {
   top: 0;
   position: fixed;
 }
-.slide-img {
-  float: left;
-  width: 40%;
-  padding-right: 40px;
-}
-.slide-txt {
-  float: left;
-  width: 60%;
-}
 .my-carousel-switch {
   display: block;
   margin-top: 116.66666666666667px;
@@ -5185,17 +5179,21 @@ section.black {
   margin-bottom: 40px;
 }
 .bg-spacer {
-  height: 500px;
-  background-image: url("../images/morning-lake.png");
-  background-size: cover;
-  background-position: center center;
+  width: 100%;
+  height: 400px;
 }
 .bg-video {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
   right: 0;
-  z-index: -1;
-  display: block;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url("polina.jpg") no-repeat;
+  background-size: cover;
+}
+.parallax {
+  background-size: cover;
 }

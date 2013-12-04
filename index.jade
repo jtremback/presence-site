@@ -1,24 +1,13 @@
 extends layout
 
 block content
-  .video-background
+  video.bg-video(autoplay="autoplay", loop="loop", poster="polina.jpg")
+    source(src="./images/traffic.mp4", type="video/mp4")
 
-  nav#main-nav.navbar.navbar-default.navbar-black.hidden-sm.hidden-xs(role='navigation' data-spy="affix" data-offset-top="50")
+  nav#main-nav.navbar.navbar-default.navbar-black(role='navigation' data-spy="affix" data-offset-top="50")
     .container
       .navbar-header
-        button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
         a(href="#" ).navbar-brand Presence
-      ul.nav.navbar-nav.pull-right
-        li
-          a(href='#process') Process
-        li
-          a(href='#case-studies') Case Studies
-        li
-          a(href='#contact') Contact
 
   .bg-spacer
 
@@ -31,63 +20,67 @@ block content
       p.lead Presence is a digital product management, development, and operations consultancy for web and mobile products. We practice lean and agile product development, helping customers identify product market fit and create high quality products.
 
 
-  section.white
+  section.js-parallax.parallax(style="background-image:url('./images/collaboration.jpg');background-position:50% 50%;")
     .container
       h1.sectitle Process
       .row
-        .col-md-8 
+        .col-md-12 
           p Presence leverages product definition, prioritization, and development processes based on lean and agile methodologies to deliver optimal products and reduce product development risk.
 
           p Evidence based product management is used to identify the correct features for a market. Features are rapidly tested against the target market to determine their value and prioritize for development.
 
           p Iterative product development is used to continually enhance product quality as feedback is provided from business requirements and customer input.
 
-        .col-md-4
-          img(src="./images/data.png")
-
 
   section.black
     .container
       h1.sectitle Case Studies
-      p.lead The Presence team works with companies ranging from start-ups to internationally recognized brands. Our clients include Google, Whole Foods, Yamaha, Scripps Network, Macquarie Telecom, Advent, and OnLive.
+      p.lead.hidden-xs The Presence team works with companies ranging from start-ups to internationally recognized brands. Our clients include Google, Whole Foods, Yamaha, Scripps Network, Macquarie Telecom, Advent, and OnLive.
 
       hr
 
       #carousel-front.carousel.slide(data-ride='carousel')        
-        .rows
-          ul.nav.nav-pills.js-carousel-indicators.my-carousel-indicators
-            li.active(data-target='#carousel-front', data-slide-to='0') <a>Macquarie</a>
-            li(data-target='#carousel-front', data-slide-to='1') <a>Advent</a>
-          .col-md-1
+        //- .container
+        ul.nav.nav-pills.js-carousel-indicators.my-carousel-indicators
+          li.active(data-target='#carousel-front', data-slide-to='0') <a>Macquarie</a>
+          li(data-target='#carousel-front', data-slide-to='1') <a>Advent</a>
+        
+        .row
+          .col-md-1.visible-md.visible-lg
             a.my-carousel-switch(href='#carousel-front', data-slide='prev')
               img.img-responsive(src="./images/carousel-left.png")
 
-          .col-md-10.my-carousel-main
+          .col-md-10.col-sm-12.col-xs-12.my-carousel-main
             .carousel-inner
               .item.active
-                .slide-img
-                  img.img-responsive(src="./images/macquarie.png")
-                .slide-txt
-                  p Macquarie Telecom faced international competition delivering infrastructure as a service (IaaS). They needed to provide additional products and services to their Australian customer base and expand their market to the United States and Europe.
-                  p Presence worked with Ninefold, a tiger team of Macquarie Telecom executives and developers, to identify a new target market, define the minimum viable product, and test their product concepts within the US market.
-                  p Ninefold will release their new platform as a service (PaaS) for Ruby developers in the Fall of 2013.
+                .row
+                  .slide-img.col-md-5.visible-lg.visible-md
+                    img.img-responsive(src="./images/macquarie.png")
+                  .slide-txt.col-md-7
+                    p Macquarie Telecom faced international competition delivering infrastructure as a service (IaaS). They needed to provide additional products and services to their Australian customer base and expand their market to the United States and Europe.
+                    p Presence worked with Ninefold, a tiger team of Macquarie Telecom executives and developers, to identify a new target market, define the minimum viable product, and test their product concepts within the US market.
+                    p Ninefold will release their new platform as a service (PaaS) for Ruby developers in the Fall of 2013.
               .item
-                .slide-img
-                  img.img-responsive(src="./images/advent.png")
-                .slide-txt    
-                  p Advent Software saw disruption of their enterprise financial management software business from lighter weight cloud and mobile based products.
-                  p Presence worked with the Advent Software team to reimagine their products for the web and mobile devices. This involved refining product requirements, prioritizing product features, and implementing cloud and mobile versions of their new products.
-                  p Their new products will be released mid 2014 through 2015.
+                .row
+                  .slide-img.col-md-5.visible-lg.visible-md
+                    img.img-responsive(src="./images/advent.png")
+                  .slide-txt.col-md-7  
+                    p Advent Software saw disruption of their enterprise financial management software business from lighter weight cloud and mobile based products.
+                    p Presence worked with the Advent Software team to reimagine their products for the web and mobile devices. This involved refining product requirements, prioritizing product features, and implementing cloud and mobile versions of their new products.
+                    p Their new products will be released mid 2014 through 2015.
 
-          .col-md-1
+          .col-md-1.visible-md.visible-lg
             a.my-carousel-switch(href='#carousel-front', data-slide='next')
               img.img-responsive(src="./images/carousel-right.png")
 
 
-  section.white
+  section.js-parallax.parallax(style="background-image:url('./images/sanfran.jpg');background-position:center top;")
     .container
       h1.sectitle Contact
       .row
+        .col-md-8
+          img.img-responsive(src="./images/map2@2x.png")
+          hr.visible-sm.visible-xs
         .col-md-4
           p Presence is headquartered in San Francisco, California.
           address
@@ -97,8 +90,6 @@ block content
             strong Mailing Address: <br/>
             | 56 Potomac St. <br/>
             | San Francisco, CA 94117
-        .col-md-8
-          iframe(width="100%", height="300px", src='http://maps.stamen.com/toner/embed#12/37.7692/-122.3782')
 
           //- img(src="./images/connections.png")
 
