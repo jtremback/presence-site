@@ -1,10 +1,9 @@
 extends layout
 
 block content
-  video.bg-video(autoplay="autoplay", loop="loop", poster="polina.jpg" width="60%")
-    source(src="./images/traffic.mp4", type="video/mp4")
+  video#bg-video.bg-video(autoplay="autoplay", loop="loop")
 
-  nav#main-nav.navbar.navbar-default.navbar-black(role='navigation' data-spy="affix" data-offset-top="50")
+  nav#main-nav.navbar.navbar-default.navbar-black(role='navigation')
     .container
       .navbar-header
         a(href="#" ).navbar-brand Presence
@@ -78,10 +77,7 @@ block content
     .container
       h1.sectitle Contact
       .row
-        .col-md-8
-          img.img-responsive(src="./images/map2@2x.png")
-          hr.visible-sm.visible-xs
-        .col-md-4
+        .col-md-4.col-md-push-8
           p Presence is headquartered in San Francisco, California.
           address
             strong Email: <br/>
@@ -90,6 +86,9 @@ block content
             strong Mailing Address: <br/>
             | 56 Potomac St. <br/>
             | San Francisco, CA 94117
+        .col-md-8.col-md-pull-4
+          img.img-responsive(src="./images/map2@2x.png")
+          hr.invis.visible-sm.visible-xs
 
           //- img(src="./images/connections.png")
 

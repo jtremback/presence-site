@@ -1,4 +1,4 @@
-$black-section = black
+$black-section = #1d1d1d
 
 *
   box-sizing border-box !important
@@ -21,6 +21,9 @@ section.black
   background $black-section
   color $body-bg
 
+hr.invis
+  border-color transparent
+
 .nav-pills
   a
     box-sizing border-box !important
@@ -38,8 +41,10 @@ section.black
       border-color white
 
 .navbar-black
+  position absolute
   left 0
   right 0
+  top 50px
   background $black-section !important
   border 0 !important
   height 100px
