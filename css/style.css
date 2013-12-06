@@ -5191,8 +5191,6 @@ section.black {
   width: auto;
   height: auto;
   z-index: -100;
-  background: url("polina.jpg") no-repeat;
-  background-size: cover;
 }
 .parallax {
   background-size: cover;
