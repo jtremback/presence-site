@@ -28,18 +28,19 @@ function parallax($el){
 }
 
 var videos = [
-  'http://vimeo.com/81169230/download?t=1386311114&v=210281169&s=e1b2db56a10da3082363186b61282de0',
-  'http://vimeo.com/81169229/download?t=1386311053&v=210283943&s=ab0eae412a497d8b9847172a373da806',
-  'http://vimeo.com/81168830/download?t=1386311157&v=210278977&s=e2c505e1bc797edc3ec58060478e8f26',
-  'http://vimeo.com/81169228/download?t=1386312293&v=210288847&s=0a75cb2a3097fc49ea0552c19f5cdd31'
+  {mp4: './videos/pond-ripples.mp4', webm: './videos/pond-ripples.webm', still: './images/pond-ripples.jpg'},
+  {mp4: './videos/dark-leaf.mp4', webm: './videos/dark-leaf.webm', still: './images/dark-leaf.jpg'},
+  {mp4: './videos/raining.mp4', webm: './videos/raining.webm', still: './images/raining.jpg'},
 ];
 
 function insertVideo(videoEl, videos) {
-  var chosen_video = videos[Math.floor(Math.random()*videos.length)];
+  var chosen = videos[Math.floor(Math.random()*videos.length)];
+  // alert(chosen.video);
+  $(videoEl).attr('poster', chosen.still);
   videoEl.innerHTML =
-    '<source src="' + chosen_video + '" type="video/mp4" />'
-    // + '<source src="/resources/video/product-hero.webmhd.webm" type="video/webm" />'
-    // + '<img src="/images/product/product-parent-hero.jpg" title="Your browser does not support the <video> tag">'
+    '<source src="' + chosen.mp4 + '" type="video/mp4" />'
+    + '<source src="' + chosen.webm + '" type="video/webm" />'
+    + '<img src="' + chosen.still + '">'
   ;
 }
 
