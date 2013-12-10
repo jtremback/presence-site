@@ -20,12 +20,11 @@ var videos = [
 
 function insertVideo(videoEl, videos) {
   var chosen = videos[Math.floor(Math.random()*videos.length)];
-  $(videoEl).attr('poster', chosen.still);
-  videoEl.innerHTML =
+  videoEl.attr('poster', chosen.still);
+  videoEl.html(
       '<source src="' + chosen.mp4 + '" type="video/mp4" />'
     + '<source src="' + chosen.webm + '" type="video/webm" />'
-    + '<img src="' + chosen.still + '">'
-  ;
+    + '<img src="' + chosen.still + '">')
 }
 
-insertVideo(document.getElementById('bg-video'), videos);
+insertVideo($('bg-video'), videos);
