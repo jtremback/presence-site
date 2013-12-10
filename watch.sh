@@ -1,0 +1,1 @@
+jade -w index.jade & stylus -w css/style.styl
