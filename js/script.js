@@ -1,7 +1,7 @@
 'use strict';
 /*global $*/
 
-$(window).scroll(function(e){
+$(window).scroll(function(){
   parallax($('.js-parallax'));
 });
 
