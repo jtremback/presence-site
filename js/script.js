@@ -18,13 +18,19 @@ var videos = [
   {mp4: './videos/raining.mp4', webm: './videos/raining.webm', still: './videos/raining.jpg'},
 ];
 
-function insertVideo(videoEl, videos) {
+function insertVideo(video_box, videos) {
   var chosen = videos[Math.floor(Math.random()*videos.length)];
-  videoEl.attr('poster', chosen.still);
-  videoEl.html(
-      '<source src="' + chosen.mp4 + '" type="video/mp4" />'
-    + '<source src="' + chosen.webm + '" type="video/webm" />'
-    + '<img src="' + chosen.still + '">')
+  if (Modernizr.video.mp4 || Modernizr.video.webm) {
+    video_box.html(
+        '<video autoplay="autoplay" loop="loop" poster="' + chosen.still + '">'
+      + '<source src="' + chosen.mp4 + '" type="video/mp4" />'
+      + '<source src="' + chosen.webm + '" type="video/webm" />'
+      + '<img src="' + chosen.still + '">'
+      + '</video>'
+    );
+  } else {
+    video_box.html('<img src="' + chosen.still + '">');
+  }
 }
 
-insertVideo($('#bg-video'), videos);
+insertVideo($('.js-video-box'), videos);
