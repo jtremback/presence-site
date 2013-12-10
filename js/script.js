@@ -28,9 +28,9 @@ function parallax($el){
 }
 
 var videos = [
-  {mp4: './videos/pond-ripples.mp4', webm: './videos/pond-ripples.webm', still: './images/pond-ripples.jpg'},
-  {mp4: './videos/dark-leaf.mp4', webm: './videos/dark-leaf.webm', still: './images/dark-leaf.jpg'},
-  {mp4: './videos/raining.mp4', webm: './videos/raining.webm', still: './images/raining.jpg'},
+  {mp4: './videos/pond-ripples.mp4', webm: './videos/pond-ripples.webm', still: './videos/pond-ripples.jpg'},
+  {mp4: './videos/dark-leaf.mp4', webm: './videos/dark-leaf.webm', still: './videos/dark-leaf.jpg'},
+  {mp4: './videos/raining.mp4', webm: './videos/raining.webm', still: './videos/raining.jpg'},
 ];
 
 function insertVideo(videoEl, videos) {
