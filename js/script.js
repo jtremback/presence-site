@@ -19,7 +19,8 @@ var videos = [
 ];
 
 function insertVideo(video_box, videos) {
-  var chosen = videos[Math.floor(Math.random()*videos.length)];
+  // var chosen = videos[Math.floor(Math.random()*videos.length)]; //This is turned off for now
+  var chosen = videos[0];
   if (Modernizr.video.mp4 || Modernizr.video.webm) {
     video_box.html(
         '<video autoplay="autoplay" loop="loop" poster="' + chosen.still + '">'

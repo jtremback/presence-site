@@ -4,7 +4,7 @@ $black-section = #1d1d1d
   box-sizing border-box !important
 
 html
-  min-width 300px
+  min-width 320px
 
 iframe
   border none
@@ -105,9 +105,7 @@ $my-carousel-height = 350px
   width 100%
   height 400px
 
-@media $media-max-phone
-  .bg-spacer
-    height 200px
+    
 
 .bg-video
   img, video
@@ -127,3 +125,23 @@ $my-carousel-height = 350px
 
 .parallax
   background-size cover
+
+$my-carousel-height_phone = 500px
+
+@media $media-max-phone
+  .bg-spacer
+    height 200px
+  .navbar-brand
+    font-size 60px !important
+    padding-left ($grid-gutter-width / 2) !important
+
+
+  .my-carousel-switch
+    margin-top ($my-carousel-height_phone / 3)
+    img
+      height ($my-carousel-height_phone / 3)
+
+  .my-carousel-main
+    height $my-carousel-height_phone
+
+

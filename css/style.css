@@ -5092,7 +5092,7 @@ td.visible-print {
   box-sizing: border-box !important;
 }
 html {
-  min-width: 300px;
+  min-width: 320px;
 }
 iframe {
   border: none;
@@ -5187,11 +5187,6 @@ hr.invis {
   width: 100%;
   height: 400px;
 }
-@media (max-width:767px) {
-  .bg-spacer {
-    height: 200px;
-  }
-}
 .bg-video img,
 .bg-video video {
   position: fixed;
@@ -5208,4 +5203,22 @@ hr.invis {
 }
 .parallax {
   background-size: cover;
+}
+@media (max-width:767px) {
+  .bg-spacer {
+    height: 200px;
+  }
+  .navbar-brand {
+    font-size: 60px !important;
+    padding-left: 20px !important;
+  }
+  .my-carousel-switch {
+    margin-top: 166.66666666666666px;
+  }
+  .my-carousel-switch img {
+    height: 166.66666666666666px;
+  }
+  .my-carousel-main {
+    height: 500px;
+  }
 }
