@@ -5101,10 +5101,8 @@ iframe {
 section {
   padding-top: 50px;
   padding-bottom: 50px;
-}
-section.white {
-  background: #fff;
-  color: #333;
+  z-index: 2;
+  position: relative;
 }
 section.black {
   background-color: #1d1d1d;
@@ -5186,18 +5184,17 @@ hr.invis {
 }
 .bg-spacer {
   width: 100%;
-  height: 400px;
+  height: 300px;
 }
 .bg-video img,
 .bg-video video {
   position: fixed;
-  top: -100px;
+  top: 0px;
   left: 0;
-  min-width: 100%;
+  min-width: 150%;
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -100;
 }
 .sectitle {
   margin-bottom: 50px;

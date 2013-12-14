@@ -13,14 +13,17 @@ iframe
 section
   padding-top 50px
   padding-bottom 50px
+  z-index 2
+  position relative
 
-section.white
-  background $body-bg
-  color $text-color
+// section.white
+//   background $body-bg
+//   color $text-color
 
 section.black
   background-color $black-section
   color $body-bg
+
 
 hr.invis
   border-color transparent
@@ -104,20 +107,19 @@ $my-carousel-height = 350px
 
 .bg-spacer
   width 100%
-  height 400px
-
+  height 300px
     
 
 .bg-video
   img, video
     position: fixed; 
-    top -100px 
+    top 0px 
     left 0
-    min-width: 100%; 
+    min-width: 150%; 
     min-height: 100%;
     width: auto; 
     height: auto; 
-    z-index: -100;
+    // z-index: -100;
     // background: url(polina.jpg) no-repeat;
     // background-size: cover
 
