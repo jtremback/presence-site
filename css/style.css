@@ -5093,6 +5093,7 @@ td.visible-print {
 }
 html {
   min-width: 320px;
+  background: #000;
 }
 iframe {
   border: none;

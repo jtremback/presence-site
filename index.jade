@@ -3,6 +3,9 @@ extends layout
 block content
   .js-video-box.bg-video
     video(autoplay="autoplay", loop="loop")
+      source(src="./videos/dark-leaf.mp4", type="video/mp4")
+      source(src="./videos/dark-leaf.mp4", type="video/webm")
+      img(src="./videos/dark-leaf.jpg")
 
   nav#main-nav.navbar.navbar-default.navbar-black(role='navigation')
     .container
@@ -71,7 +74,7 @@ block content
               img.img-responsive(src="./images/carousel-right.png")
 
 
-  section.js-parallax.parallax(style="background-image:url('./images/sanfran.jpg');background-position:center top;")
+  section.js-parallax.parallax(style="background-image:url('./images/sanfran.jpg');background-position:50% 50%;")
     .container
       h1.sectitle Contact
       .row
