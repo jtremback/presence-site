@@ -32,6 +32,10 @@
 		</script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.js"></script>
 
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.reveal/1.0/reveal.min.css">
+		<script src="//code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
+		<script src="//cdn.jsdelivr.net/jquery.reveal/1.0/jquery.reveal.min.js" type="text/javascript"></script>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -51,25 +55,34 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Experiments in D3</h1>
+					<h1>Experiments in D3:</h1>
 					<br>
 					<h2>Financial Visualization in the Enterprise</h2>
-				    <aside class="notes">
+				    <notes class="notes">
+
+				    <p>Intro Slide</p>
 					        
-					</aside>
+					</notes>
 				</section>
 
 				<section>
-					<h1>The two question we will answer today.</h1>
-					<ol>
-						<li> First: How to create d3 charts with fincial data.</li>
-						<li> Second: How to allow users to interact with fincial data to gain business insight.</li>
-					</ol>
+					<h1>What you will learn in this talk:</h1>
+					<ul>
+						<li> <h3><b>Simple Thing:</b> How we built a dahsboard of data visulazations for a Hedge Fund.</h3></li>
+						<li> <h3><b>Less Simple Thing:</b> How to use d3 to better communicate valueable data.</h3> </li>
+					</ul>
+					
+				    <notes class="notes">
+
+				    <p>Intro Slide</p>
+					        
+					</notes>
 				</section>
 
 				<section>
-					<h1>The Client's Goal:</h1>
+					<h1>First: The Client's Goal:</h1>
 					<h2>Build a web application with an expandable librarty of panels with visulzations of fincial data.</h2>
+					<notes></notes>
 				</section>
 
 				<section>
@@ -302,16 +315,26 @@
 
 		</script>
 
+<div id="myModalNotes" class="reveal-modal">
+     <h1>Slide Notes</h1>
+     <p class='content'>Any content could go in here.</p>
+     <a class="close-reveal-modal">&#215;</a>
+</div>
+<a id="notes" onclick="injectNotes()" href="#" data-reveal-id="myModalNotes">Slide Notes</a>
+
 	</body>
 </html>
 
 <style>
-	.note{
-		display:block;
-		position: relative;
-		bottom: 0px;
-		left: 0px;
+	#notes{
+		position:fixed;
+		bottom: 10px;
+		right: 0px;
+		z-index: 999;
 
+	}
+	.notes{
+		display: none;
 	}
 	.reveal h1{
 		margin-bottom: 1em;
@@ -335,6 +358,16 @@
 </style>
 
 <script>
+injectNotes=function(){
+	var notes = $(Reveal.getCurrentSlide()).find('notes')
+
+	
+
+	$('#myModalNotes .content').html(notes.html())
+
+
+	
+}
 /**
 * A bar chart. Required data format:
 * [ { name : x-axis-bar-label, value : N }, ...]
