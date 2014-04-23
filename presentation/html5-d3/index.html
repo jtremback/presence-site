@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Experiments in D3 - Financial Visualization in the Enterprise</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+<!-- 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+ -->
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.js"></script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<style>
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		</style>
+
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Experiments in D3</h1>
+					<br>
+					<h2>Financial Visualization in the Enterprise</h2>
+				    <aside class="notes">
+					        
+					</aside>
+				</section>
+
+				<section>
+					<h1>The two question we will answer today.</h1>
+					<ol>
+						<li> First: How to create d3 charts with fincial data.</li>
+						<li> Second: How to allow users to interact with fincial data to gain business insight.</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>The Client's Goal:</h1>
+					<h2>Build a web application with an expandable librarty of panels with visulzations of fincial data.</h2>
+				</section>
+
+				<section>
+					<h1>Break Business down of requirments:</h1>
+					<div>
+						<ol>
+							<li>Basics chart for thier data: Bars Lines, and pie graphs</li>
+							<li>Custom Look and Feel</li>
+							<li>Non standard Graph Units</li>
+							<li>Interactons to Boot</li>
+						</ol>
+					</div>
+				</section>
+				<section>
+					<h1>The Technology problems that compliment this?</h1>
+					<div>
+						<ol>
+							<li>The basics chars: bar line, pie.</li>
+							<li>Custome ledgends, labels and units (years/quarters ... tranches/Risk Numerals)</li>
+							<li>Scaling and sizing for different form factors</li>
+							<li>Different data resolutions for differetn graph sizes</li>
+							<li>Different data resolutions for differetn graph sizes</li>
+						</ol>
+					</div>
+				</section>
+				<section>
+					<h1>Options?</h1>
+					<div>
+						<ol>
+							<li class="chartbasic">Highcharts</li>
+							<li class="chartbasic">Google charts</li>
+							<li class="chartbasic">Chart.js</li>
+
+<!-- 							<li class="timeseries">Rickshaw</li>
+							<li class="timeseries">dygraphs</li>
+
+							<li class="chartinteractions">Canvas.js</li>
+							<li class="chartinteractions">gRaphael</li> -->
+
+<!-- 							<li class="chartdyi">d3.js</li>
+							<li class="chartdyi">Raphael.js</li> -->
+						</ol>
+						<ol>
+							<li class="chartbasic">Basic</li>
+							<li class="timeseries">Time Series</li>
+							<li class="chartinteractions">Interaction Specific</li>
+							<li class="chartinteractions">Scafold</li>
+						</ol>
+						<style>
+						.chartbasic{
+							color:red;
+
+						}
+						.timeseries{
+							color:green;
+							
+						}
+						.chartdyi{
+							color:blue;
+						}
+						.chartinteractions{
+							color:purple;
+						}
+						</style>
+					</div>
+				</section>			
+				<section>
+					<h2>Why we Chose D3</h2>
+					<p>
+						JavaScript Library for DOM manipulation based on Data. (Data Driven Documents).
+						<annotions>
+							a.This is not angular
+							b. 
+						</annotions>
+					</p>
+				</section>
+
+				<section>
+					<h2>Technical Criteria we needed to support?</h2>
+					<p>
+					<!-- Point from the techincal requirments to the features of the library from previous slide-->
+					<ol>
+						<li>Customization</li>
+						<li>It needs to play nice with Angular</li>
+						<li>Nexus and iPhone</li>
+						<li>New visulaization would be added to the platform</li>
+						<li>Scale and Range</li>
+					</ol>
+					</p>
+					<annotions>
+
+					</annotions>
+				</section>
+
+<!-- 				<section>
+					<h2>What charateristics would an ideal library have</h2>
+					<p>
+					<ol>
+						<li>Simple to get started with lots of examples</li>
+						<li>Open source and maintained by an active community</li>
+						<li>3rd party lib and extensions.</li>
+					</ol>
+					</p>
+				</section> -->
+
+<!-- 				<section>
+					<h2>Why is D3 so popular ...?</h2>
+					<p>
+					<i>All the cool kids are doing it. Duh!  -Brian (Presence Developer)</i>
+					<i>Because our user's expect slick sexy graphs... we need -The Customer</i>
+					<b>An Amazing Consensus!</b>
+					</p>
+				</section> -->
+
+				<section>
+					<h2>Let's make a chart!</h2>
+					<div id="piegraph">
+					 <style>
+					 #piegraph{
+					 	margin-top:200px;
+					 }
+					 #piegraph div {
+						  font: 10px sans-serif;
+						  background-color: steelblue;
+						  text-align: right;
+						  padding: 3px;
+						  margin: 1px;
+						  color: white;
+						}
+					 </style>
+				</section>
+				<section>
+					<h2>Step 1: Organizing the view</h2>
+					<ol>
+						<li> Padding and Labeling </li>
+						<i>Padding example goes here</i>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Step 2: Scaleing and fitting data</h2>
+					<i>Scaleing examples go here.</i>
+				</section>
+
+				<section>
+					<h2>Step 3: Colors!</h2>
+					<i>Adding Color to graph and ledgends</i>
+				</section>
+
+				<section>
+					<h2>Step 4: Adding a second line for comparison.</h2>
+					<i>Second data item code and live example</i>
+				</section>
+
+				<section>
+					<h2>Step 5: Resizing the graph.</h2>
+					<i>resizing code</i>
+				</section>
+
+				<!-- Part Two -->
+				<section>
+					<h2>Section 2: Taking it Beyond Static.</h2>
+				</section>
+
+				<section>
+					<h2>Step 1: Showing more data on touchs and clicks.</h2>
+					<i>Exmaple Code for more data </i>
+				</section>
+
+				<section>
+					<h2>Step 2: Changing the scale to get more data resolution.</h2>
+					<i>Exmaple code scale changes</i>
+				</section>
+
+				<section>
+					<h2>Step 3: Changing the Data Dynamiclly.</h2>
+					<i>Resizing code</i>
+				</section>
+
+				<!-- Part Three -->
+				<!-- Ties these back to business problems stated in the first slides-->
+				<section>
+					<h2>Part Three: Telling a better story.</h2>
+				</section>
+
+				<section>
+					<h2>Step 1: Clearly label the purpose of each axis.</h2>
+					<i>Resizing code</i>
+				</section>
+
+				<section>
+					<h2>Step 2: Toggles that hook into data.</h2>
+					<i>Resizing code</i>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear',//Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
+
+<style>
+	.note{
+		display:block;
+		position: relative;
+		bottom: 0px;
+		left: 0px;
+
+	}
+	.reveal h1{
+		margin-bottom: 1em;
+		font-size: 3em;
+	}
+
+	.reveal .slides {
+		text-align: left;
+	}
+
+	.reveal h1{
+		margin-bottom: 2em;
+	}
+
+	.reveal ol li, .reveal ul li{
+		margin-bottom: .5em;
+	}
+
+
+
+</style>
+
+<script>
+/**
+* A bar chart. Required data format:
+* [ { name : x-axis-bar-label, value : N }, ...]
+* Sample use:
+*/  
+
+// var data = [4, 8, 15, 16, 23, 42];
+
+// var x = d3.scale.linear()
+//     .domain([0, d3.max(data)])
+//     .range([0, 420]);
+
+// d3.select("#piegraph")
+//   .selectAll("div")
+//     .data(data)
+//   .enter().append("div")
+//     .style("width", function(d) { return x(d) + "px"; })
+//     .text(function(d) { return d; });
+
+
+</script>
