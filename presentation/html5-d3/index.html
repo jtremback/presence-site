@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Experiments in D3 - Financial Visualization in the Enterprise</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -313,6 +313,25 @@
 		left: 0px;
 
 	}
+	.reveal h1{
+		margin-bottom: 1em;
+		font-size: 3em;
+	}
+
+	.reveal .slides {
+		text-align: left;
+	}
+
+	.reveal h1{
+		margin-bottom: 2em;
+	}
+
+	.reveal ol li, .reveal ul li{
+		margin-bottom: .5em;
+	}
+
+
+
 </style>
 
 <script>
@@ -322,18 +341,18 @@
 * Sample use:
 */  
 
-var data = [4, 8, 15, 16, 23, 42];
+// var data = [4, 8, 15, 16, 23, 42];
 
-var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, 420]);
+// var x = d3.scale.linear()
+//     .domain([0, d3.max(data)])
+//     .range([0, 420]);
 
-d3.select("#piegraph")
-  .selectAll("div")
-    .data(data)
-  .enter().append("div")
-    .style("width", function(d) { return x(d) + "px"; })
-    .text(function(d) { return d; });
+// d3.select("#piegraph")
+//   .selectAll("div")
+//     .data(data)
+//   .enter().append("div")
+//     .style("width", function(d) { return x(d) + "px"; })
+//     .text(function(d) { return d; });
 
 
 </script>
