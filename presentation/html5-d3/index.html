@@ -14,7 +14,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
 <!-- 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
  -->
 		<!-- For syntax highlighting -->
@@ -32,9 +32,14 @@
 		</script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.js"></script>
 
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.reveal/1.0/reveal.min.css">
+		<!--<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.reveal/1.0/reveal.min.css">-->
 		<script src="//code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
 		<script src="//cdn.jsdelivr.net/jquery.reveal/1.0/jquery.reveal.min.js" type="text/javascript"></script>
+
+    	<link rel="stylesheet" type="text/css" href="css/monokai_sublime.min.css">
+		<script src="js/vendor/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -77,6 +82,17 @@
 					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
 					</notes>
 				</section>
+
+
+				<section>
+					<h1><b>Part I:</b>
+					<br>
+					What project is right for d3.js and why.</h1>
+				    <notes class="notes">
+					    <p>Set the stage for the app and the requirmetns as an intro to the library.</p>
+					</notes>
+				</section>
+
 
 				<section>
 					<h1>The Client's Goal:</h1>
@@ -163,106 +179,190 @@
 					</notes>
 				</section>
 
-
+				<section>
+					<h1><b>Part II:</b>
+					<br>
+					Making visualizations with your data.</h1>
+				    <notes class="notes">
+					    <p>Set the stage for a code filled romp throught building up a d3 visulzation from json to JS.</p>
+					</notes>
+				</section>
 
 				<section>
-					<h2>Technical Criteria we needed to support?</h2>
-					<p>
-					<!-- Point from the techincal requirments to the features of the library from previous slide-->
-					<ol>
-						<li>Customization</li>
-						<li>It needs to play nice with Angular</li>
-						<li>Nexus and iPhone</li>
-						<li>New visulaization would be added to the platform</li>
-						<li>Scale and Range</li>
-					</ol>
-					</p>
-					<annotions>
+					<h1 style="margin-top:-75px;">1. The view area</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Margin Example</i>
+					<div>
+					<pre>
+						<code>
+							//Properly Size and select margins;
+							var data = [4, 8, 15, 16, 23, 42];
 
-					</annotions>
+							var x = d3.scale.linear()
+							    .domain([0, d3.max(data)])
+							    .range([0, 420]);
+
+							d3.select("#piegraph")
+							  .selectAll("div")
+							    .data(data)
+							  .enter().append("div")
+							    .style("width", function(d) { return x(d) + "px"; })
+							    .text(function(d) { return d; });
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
 				</section>
 
 
 				<section>
-					<h2>Let's make a chart!</h2>
-					<div id="piegraph">
-					 <style>
-					 #piegraph{
-					 	margin-top:200px;
-					 }
-					 #piegraph div {
-						  font: 10px sans-serif;
-						  background-color: steelblue;
-						  text-align: right;
-						  padding: 3px;
-						  margin: 1px;
-						  color: white;
-						}
-					 </style>
+					<h1 style="margin-top:-75px;">2. Labels and Ledgends</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Ledgends and Labels</i>
+					<div>
+					<pre>
+						<code>
+							//Use the Ledgends API to space and formate when
+
+							//
+							//Live Code Goes here
+							//
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					    <p> Because Pretty Matters</p>
+
+					</notes>
 				</section>
+
+
 				<section>
-					<h2>Step 1: Organizing the view</h2>
-					<ol>
-						<li> Padding and Labeling </li>
-						<i>Padding example goes here</i>
-					</ol>
+					<h1 style="margin-top:-75px;">3. Scaling everything to fit</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Scaling everything to fit</i>
+					<div>
+					<pre>
+						<code>
+							//Use the built in scaling API to translate all values to the viewport
+							//Think of the extreme possibilies in your data!
+
+							//
+							//Live Code Goes here
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> Scaling is a simple as fiting a range of pixels to the max and min in a data set.</p>
+					    <p> With dyanmic data sets this wil become more of challenge. </p>
+
+					</notes>
+				</section>
+
+
+				<section>
+					<h1 style="margin-top:-75px;">4. Colors and contrast</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Cordinating colors across large data sets</i>
+					<div>
+					<pre>
+						<code>
+							//d3's built in color singlton manages colors with thousands fo data types.
+
+							//
+							//Live Code Goes here
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1 style="margin-top:-75px;">5. Adding a second plot.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: A 2nd Datra set on the same graph</i>
+					<div>
+					<pre>
+						<code>
+							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
 				</section>
 
 				<section>
-					<h2>Step 2: Scaleing and fitting data</h2>
-					<i>Scaleing examples go here.</i>
+					<h1 style="margin-top:-75px;">5.Responsive Design.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Show the grpah dynamically resize</i>
+					<div>
+					<pre>
+						<code>
+							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
 				</section>
 
-				<section>
-					<h2>Step 3: Colors!</h2>
-					<i>Adding Color to graph and ledgends</i>
-				</section>
 
 				<section>
-					<h2>Step 4: Adding a second line for comparison.</h2>
-					<i>Second data item code and live example</i>
+					<h1><b>Part III:</b>
+					<br>
+					Taking It Beyond Static.</h1>
+				    <notes class="notes">
+					    <p>Set the stage adding interactions to your data.</p>
+					</notes>
 				</section>
 
-				<section>
-					<h2>Step 5: Resizing the graph.</h2>
-					<i>resizing code</i>
-				</section>
-
-				<!-- Part Two -->
-				<section>
-					<h2>Section 2: Taking it Beyond Static.</h2>
-				</section>
 
 				<section>
-					<h2>Step 1: Showing more data on touchs and clicks.</h2>
-					<i>Exmaple Code for more data </i>
+					<h1 style="margin-top:-75px;">6. Adding a second plot.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: A 2nd Datra set on the same graph</i>
+					<div>
+					<pre>
+						<code>
+							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
 				</section>
 
-				<section>
-					<h2>Step 2: Changing the scale to get more data resolution.</h2>
-					<i>Exmaple code scale changes</i>
-				</section>
-
-				<section>
-					<h2>Step 3: Changing the Data Dynamiclly.</h2>
-					<i>Resizing code</i>
-				</section>
-
-				<!-- Part Three -->
-				<!-- Ties these back to business problems stated in the first slides-->
-				<section>
-					<h2>Part Three: Telling a better story.</h2>
-				</section>
-
-				<section>
-					<h2>Step 1: Clearly label the purpose of each axis.</h2>
-					<i>Resizing code</i>
-				</section>
-
-				<section>
-					<h2>Step 2: Toggles that hook into data.</h2>
-					<i>Resizing code</i>
-				</section>
 
 			</div>
 
@@ -345,14 +445,8 @@
 
 <script>
 injectNotes=function(){
-	var notes = $(Reveal.getCurrentSlide()).find('notes')
-
-	
-
-	$('#myModalNotes .content').html(notes.html())
-
-
-	
+	var notes = $(Reveal.getCurrentSlide()).find('notes');
+	$('#myModalNotes .content').html(notes.html());
 }
 /**
 * A bar chart. Required data format:
@@ -360,18 +454,80 @@ injectNotes=function(){
 * Sample use:
 */  
 
-// var data = [4, 8, 15, 16, 23, 42];
+var data = [4, 8, 15, 16, 23, 42];
 
-// var x = d3.scale.linear()
-//     .domain([0, d3.max(data)])
-//     .range([0, 420]);
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
 
-// d3.select("#piegraph")
-//   .selectAll("div")
-//     .data(data)
-//   .enter().append("div")
-//     .style("width", function(d) { return x(d) + "px"; })
-//     .text(function(d) { return d; });
+d3.select("#piegraph")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
 
+/**
+* A Venn . Required data format:
+* [ { name : x-axis-bar-label, value : N }, ...]
+* Sample use:
+*/  
+
+
+chart = function(div){
+
+var w = 960,
+    h = 500;
+ 
+var svg = d3.select(div).append("svg:svg")
+    .attr("width", w)
+    .attr("height", h);
+ 
+svg.append("svg:circle")
+    .attr("cx", 350)
+    .attr("cy", 200)
+    .attr("r", 200)
+    .style("fill", "brown")
+    .style("fill-opacity", ".5");
+ 
+svg.append("svg:circle")
+    .attr("cx", 550)
+    .attr("cy", 200)
+    .attr("r", 200)
+    .style("fill", "steelblue")
+    .style("fill-opacity", ".5");
+ 
+svg.append("svg:circle")
+    .attr("cx", 450)
+    .attr("cy", 300)
+    .attr("r", 200)
+    .style("fill", "green")
+    .style("fill-opacity", ".5");
+
+}
+
+$('.venn').each(function(){
+
+	chart(this);
+});
 
 </script>
+
+
+<!--<section>
+<h2>Part II : Let's make a chart!</h2>
+<div id="piegraph">
+ <style>
+ #piegraph{
+ 	margin-top:200px;
+ }
+ #piegraph div {
+	  font: 10px sans-serif;
+	  background-color: steelblue;
+	  text-align: right;
+	  padding: 3px;
+	  margin: 1px;
+	  color: white;
+	}
+ </style>
+</section>-->
