@@ -68,97 +68,102 @@
 				<section>
 					<h1>What you will learn in this talk:</h1>
 					<ul>
-						<li> <h3><b>Simple Thing:</b> How we built a dahsboard of data visulazations for a Hedge Fund.</h3></li>
+						<li> <h3><b>Simple Thing:</b> How we built a dashboard of data visulazations for a Hedge Fund.</h3></li>
 						<li> <h3><b>Less Simple Thing:</b> How to use d3 to better communicate valueable data.</h3> </li>
 					</ul>
-					
-				    <notes class="notes">
 
-				    <p>Intro Slide</p>
-					        
+				    <notes class="notes">
+					    <p>Cover that we will cover code examples of a simple app and...</p>
+					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
 					</notes>
 				</section>
 
 				<section>
-					<h1>First: The Client's Goal:</h1>
-					<h2>Build a web application with an expandable librarty of panels with visulzations of fincial data.</h2>
-					<notes></notes>
+					<h1>The Client's Goal:</h1>
+					<ul>
+						<li> <h3>Build a web application with a libray of fincial data visualization "widgets".</h3></li>
+						<li> <h3> Help users better understand where thier money is.</h3></li>
+					</ul>
+
+				    <notes class="notes">
+					    <p>Start with the simple part... what are the base decribption of the apps function</p>
+
+					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
+					</notes>
 				</section>
 
 				<section>
-					<h1>Break Business down of requirments:</h1>
+					<h1>What the client asked for:</h1>
 					<div>
-						<ol>
-							<li>Basics chart for thier data: Bars Lines, and pie graphs</li>
-							<li>Custom Look and Feel</li>
-							<li>Non standard Graph Units</li>
-							<li>Interactons to Boot</li>
-						</ol>
+						<ul>
+							<li><h3>Small & Fast</h3></li>
+							<li><h3>Customizable</h3></li>
+							<li><h3>Well Documented (for further dev work)</h3></li>
+						</ul>
 					</div>
+				    <notes class="notes">
+					    <p>Here is where we intoduce the clients asked for as requirments for the types of graphs.  It's immportant to emphasize that interpiting this is important in selecting something that will grow with the project.</p>
+					</notes>
 				</section>
+
 				<section>
-					<h1>The Technology problems that compliment this?</h1>
+					<h1>The options:</h1>
 					<div>
-						<ol>
-							<li>The basics chars: bar line, pie.</li>
-							<li>Custome ledgends, labels and units (years/quarters ... tranches/Risk Numerals)</li>
-							<li>Scaling and sizing for different form factors</li>
-							<li>Different data resolutions for differetn graph sizes</li>
-							<li>Different data resolutions for differetn graph sizes</li>
-						</ol>
+						<ul>
+							<li><h3>All Inclusize Chart Library (i.e. Goolge Charts)</h3></li>
+							<li><h3>Boutique Graphs (rickshow.js, HighStock)</h3></li>
+							<li><h3>DOM Manipulation (D3, Raphael)</h3></li>
+						</ul>
 					</div>
+				    <notes class="notes">
+					    <p> Lots of options for creating data vis. But three basic Catagoies prevail</p>
+
+					    <p> Preconfigured, Specialized (Boutique) and scaffolding (clay).  The scaffolding is simply a tool for painting and moving shapes</p>
+					</notes>
 				</section>
+
 				<section>
-					<h1>Options?</h1>
+					<h1>Why D3:</h1>
 					<div>
-						<ol>
-							<li class="chartbasic">Highcharts</li>
-							<li class="chartbasic">Google charts</li>
-							<li class="chartbasic">Chart.js</li>
+						<ul>
+							<li><h3>The charts and visulzations would be extended.</h3></li>
+							<li><h3>Clear requirment for unique visulazations</h3></li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p> Here we need to emphasize that customization is the achilles heal of pre-configured graphing libraries</p>
+					</notes>
+				</section>
 
-<!-- 							<li class="timeseries">Rickshaw</li>
-							<li class="timeseries">dygraphs</li>
-
-							<li class="chartinteractions">Canvas.js</li>
-							<li class="chartinteractions">gRaphael</li> -->
-
-<!-- 							<li class="chartdyi">d3.js</li>
-							<li class="chartdyi">Raphael.js</li> -->
-						</ol>
-						<ol>
-							<li class="chartbasic">Basic</li>
-							<li class="timeseries">Time Series</li>
-							<li class="chartinteractions">Interaction Specific</li>
-							<li class="chartinteractions">Scafold</li>
-						</ol>
-						<style>
-						.chartbasic{
-							color:red;
-
-						}
-						.timeseries{
-							color:green;
+				<section>
+					<h1>JavaScript Library for DOM manipulation. </h1><h1> Data Driven Documents.</h1>
+					<div>
+						<h3>
 							
-						}
-						.chartdyi{
-							color:blue;
-						}
-						.chartinteractions{
-							color:purple;
-						}
-						</style>
+						</h3>
 					</div>
-				</section>			
-				<section>
-					<h2>Why we Chose D3</h2>
-					<p>
-						JavaScript Library for DOM manipulation based on Data. (Data Driven Documents).
-						<annotions>
-							a.This is not angular
-							b. 
-						</annotions>
-					</p>
+				    <notes class="notes">
+					    <p> Redefine what D3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
+					</notes>
 				</section>
+
+
+				<section>
+					<h1>The tech side d3 satisfies:</h1>
+					<div>
+						<ul>
+							<li><h3>Responsize: Tablet and phone resultion supported</h3></li>
+							<li><h3>Fast (i.e. 10+ small sized graphs) </h3></li>
+							<li><h3>Custom anything (labels, units and interactions) </h3></li>
+							<li><h3>A solid Community (Lots of examples and snippets to borrow from)</h3></li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
+				</section>
+
+
 
 				<section>
 					<h2>Technical Criteria we needed to support?</h2>
@@ -177,25 +182,6 @@
 					</annotions>
 				</section>
 
-<!-- 				<section>
-					<h2>What charateristics would an ideal library have</h2>
-					<p>
-					<ol>
-						<li>Simple to get started with lots of examples</li>
-						<li>Open source and maintained by an active community</li>
-						<li>3rd party lib and extensions.</li>
-					</ol>
-					</p>
-				</section> -->
-
-<!-- 				<section>
-					<h2>Why is D3 so popular ...?</h2>
-					<p>
-					<i>All the cool kids are doing it. Duh!  -Brian (Presence Developer)</i>
-					<i>Because our user's expect slick sexy graphs... we need -The Customer</i>
-					<b>An Amazing Consensus!</b>
-					</p>
-				</section> -->
 
 				<section>
 					<h2>Let's make a chart!</h2>
