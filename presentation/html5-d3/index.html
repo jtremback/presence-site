@@ -32,7 +32,7 @@
 		</script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.js"></script>
 
-		<!--<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.reveal/1.0/reveal.min.css">-->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.reveal/1.0/reveal.min.css">
 		<script src="//code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
 		<script src="//cdn.jsdelivr.net/jquery.reveal/1.0/jquery.reveal.min.js" type="text/javascript"></script>
 
@@ -62,7 +62,7 @@
 				<section>
 					<h1>Experiments in D3:</h1>
 					<br>
-					<h2>Financial Visualization in the Enterprise</h2>
+					<h2>Financial Visualization in the Enterprise.</h2>
 				    <notes class="notes">
 
 				    <p>Intro Slide</p>
@@ -73,12 +73,12 @@
 				<section>
 					<h1>What you will learn in this talk:</h1>
 					<ul>
-						<li> <h3><b>Simple Thing:</b> How we built a dashboard of data visulazations for a Hedge Fund.</h3></li>
-						<li> <h3><b>Less Simple Thing:</b> How to use d3 to better communicate valueable data.</h3> </li>
+						<li> <h3><b>Simple Thing:</b> How we built a dashboard of data visualizations for a Hedge Fund.</h3></li>
+						<li> <h3><b>Less Simple Thing:</b> How to use d3 to better communicate valuable data.</h3> </li>
 					</ul>
 
 				    <notes class="notes">
-					    <p>Cover that we will cover code examples of a simple app and...</p>
+					    <p>Show that we will cover code examples of a simple app and...</p>
 					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
 					</notes>
 				</section>
@@ -87,7 +87,7 @@
 				<section>
 					<h1><b>Part I:</b>
 					<br>
-					What project is right for d3.js and why.</h1>
+					What projects are right for d3.js?</h1>
 				    <notes class="notes">
 					    <p>Set the stage for the app and the requirmetns as an intro to the library.</p>
 					</notes>
@@ -95,14 +95,14 @@
 
 
 				<section>
-					<h1>The Client's Goal:</h1>
+					<h1>Our Client's Goal:</h1>
 					<ul>
-						<li> <h3>Build a web application with a libray of fincial data visualization "widgets".</h3></li>
-						<li> <h3> Help users better understand where thier money is.</h3></li>
+						<li> <h3>Build a web application with a library of financial data visualization "widgets".</h3></li>
+						<li> <h3>Help users better understand thier postions and portfolios.</h3></li>
 					</ul>
 
 				    <notes class="notes">
-					    <p>Start with the simple part... what are the base decribption of the apps function</p>
+					    <p>Start with the simple part... what are the best description of the apps function</p>
 
 					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
 					</notes>
@@ -112,47 +112,50 @@
 					<h1>What the client asked for:</h1>
 					<div>
 						<ul>
-							<li><h3>Small & Fast</h3></li>
-							<li><h3>Customizable</h3></li>
-							<li><h3>Well Documented (for further dev work)</h3></li>
+							<li><h3>Fast load times</h3></li>
+							<li><h3>Customizable Visualizations.</h3></li>
+							<li><h3>Well Documented (for pass off)</h3></li>
 						</ul>
 					</div>
 				    <notes class="notes">
-					    <p>Here is where we intoduce the clients asked for as requirments for the types of graphs.  It's immportant to emphasize that interpiting this is important in selecting something that will grow with the project.</p>
+					    <p>Here is where we intoduce the clients req. for the types of graphs.  It's immportant to emphasize that interpiting this is important in selecting something that will grow with the project.</p>
+
+					    <p> Also the point the types of experiments that that require are introduced </p>
 					</notes>
 				</section>
 
 				<section>
-					<h1>The options:</h1>
+					<h1>Visualization Libraries (three types)</h1>
+					<br>
 					<div>
 						<ul>
-							<li><h3>All Inclusize Chart Library (i.e. Goolge Charts)</h3></li>
+							<li><h3>All Inclusive Chart Library (i.e. Goolge Charts)</h3></li>
 							<li><h3>Boutique Graphs (rickshow.js, HighStock)</h3></li>
 							<li><h3>DOM Manipulation (D3, Raphael)</h3></li>
 						</ul>
 					</div>
 				    <notes class="notes">
-					    <p> Lots of options for creating data vis. But three basic Catagoies prevail</p>
+					    <p> Lots of options for creating data vis. But three basic catagoies prevail</p>
 
 					    <p> Preconfigured, Specialized (Boutique) and scaffolding (clay).  The scaffolding is simply a tool for painting and moving shapes</p>
 					</notes>
 				</section>
 
 				<section>
-					<h1>Why D3:</h1>
+					<h1>Why We Chose d3.js:</h1>
 					<div>
 						<ul>
-							<li><h3>The charts and visulzations would be extended.</h3></li>
-							<li><h3>Clear requirment for unique visulazations</h3></li>
+							<li><h3>New data would require unforseen visualizations.</h3></li>
+							<li><h3> Unique visualizations required.</h3></li>
 						</ul>
 					</div>
 				    <notes class="notes">
-					    <p> Here we need to emphasize that customization is the achilles heal of pre-configured graphing libraries</p>
+					    <p> Here we need to emphasize that customization is the achilles heel of pre-configured graphing libraries</p>
 					</notes>
 				</section>
 
 				<section>
-					<h1>JavaScript Library for DOM manipulation. </h1><h1> Data Driven Documents.</h1>
+					<h1>JavaScript library for DOM manipulation. </h1><h1> Data Driven Documents.</h1>
 					<div>
 						<h3>
 							
@@ -165,13 +168,13 @@
 
 
 				<section>
-					<h1>The tech side d3 satisfies:</h1>
+					<h1>The tech side of d3:</h1>
 					<div>
 						<ul>
-							<li><h3>Responsize: Tablet and phone resultion supported</h3></li>
-							<li><h3>Fast (i.e. 10+ small sized graphs) </h3></li>
-							<li><h3>Custom anything (labels, units and interactions) </h3></li>
-							<li><h3>A solid Community (Lots of examples and snippets to borrow from)</h3></li>
+							<li><h3>Responsive: Tablet and phone resolution supported.</h3></li>
+							<li><h3>Fast (i.e. 10+ graphs per page).</h3></li>
+							<li><h3>Custom anything (labels, units and interactions).</h3></li>
+							<li><h3>A solid community (Lots of examples and snippets to borrow from).</h3></li>
 						</ul>
 					</div>
 				    <notes class="notes">
@@ -189,9 +192,9 @@
 				</section>
 
 				<section>
-					<h1 style="margin-top:-75px;">1. The view area</h1>
+					<h1 style="margin-top:-75px;">1. The view area.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Margin Example</i>
+					<i>Placeholder Image: Margin Example.</i>
 					<div>
 					<pre>
 						<code>
@@ -219,9 +222,9 @@
 
 
 				<section>
-					<h1 style="margin-top:-75px;">2. Labels and Ledgends</h1>
+					<h1 style="margin-top:-75px;">2. Labels and Ledgends.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Ledgends and Labels</i>
+					<i>Placeholder Image: Legends and Labels.</i>
 					<div>
 					<pre>
 						<code>
@@ -244,9 +247,9 @@
 
 
 				<section>
-					<h1 style="margin-top:-75px;">3. Scaling everything to fit</h1>
+					<h1 style="margin-top:-75px;">3. Scaling everything to fit.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Scaling everything to fit</i>
+					<i>Placeholder Image: Scaling everything to fit.</i>
 					<div>
 					<pre>
 						<code>
@@ -268,9 +271,9 @@
 
 
 				<section>
-					<h1 style="margin-top:-75px;">4. Colors and contrast</h1>
+					<h1 style="margin-top:-75px;">4. Colors and contrast.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Cordinating colors across large data sets</i>
+					<i>Placeholder Image: Coordinating colors across large data sets.</i>
 					<div>
 					<pre>
 						<code>
@@ -292,7 +295,7 @@
 				<section>
 					<h1 style="margin-top:-75px;">5. Adding a second plot.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: A 2nd Datra set on the same graph</i>
+					<i>Placeholder Image: A second Datra set on the same graph.</i>
 					<div>
 					<pre>
 						<code>
@@ -305,19 +308,20 @@
 					</pre>
 					</div>
 				    <notes class="notes">
-					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
-					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					    <p> Adding a 2nd plot mean both can use the same formating and scale but have different look.</p>
+					    <p> This will be important for when interactions will be introduced.</p>
+
 					</notes>
 				</section>
 
 				<section>
-					<h1 style="margin-top:-75px;">5.Responsive Design.</h1>
+					<h1 style="margin-top:-75px;">5. Responsive Design.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Show the grpah dynamically resize</i>
+					<i>Placeholder Image: Show the grpah dynamically resize.</i>
 					<div>
 					<pre>
 						<code>
-							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
+							// Scaling the data for multiple views and for new data.
 
 							//
 							//Live Code Goes here.
@@ -326,8 +330,7 @@
 					</pre>
 					</div>
 				    <notes class="notes">
-					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
-					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					    <p> When adding new data for a dynamic graph this will be required.</p>
 					</notes>
 				</section>
 
@@ -337,19 +340,19 @@
 					<br>
 					Taking It Beyond Static.</h1>
 				    <notes class="notes">
-					    <p>Set the stage adding interactions to your data.</p>
+					    <p>Set the stage adding interactions to your data.  Make a seque to telling a better story</p>
 					</notes>
 				</section>
 
 
 				<section>
-					<h1 style="margin-top:-75px;">6. Adding a second plot.</h1>
+					<h1 style="margin-top:-75px;">6. Dynamically inserting more data.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: A 2nd Datra set on the same graph</i>
+					<i>Placeholder Image: A second Datra set on the same graph</i>
 					<div>
 					<pre>
 						<code>
-							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
+							// A seond data set on top of an existing means sharing mny of the resources you have just applied.
 
 							//
 							//Live Code Goes here.
@@ -363,6 +366,109 @@
 					</notes>
 				</section>
 
+
+
+				<section>
+					<h1 style="margin-top:-75px;">7. Changing the data.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: Showing more data with interactions.</i>
+					<div>
+					<pre>
+						<code>
+							// Adding seond data set on top of an existing.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> Basic methode for using </p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1 style="margin-top:-75px;">8. Reveal more with an interaction.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder Image: An expanded view upon a click/touch.</i>
+					<div>
+					<pre>
+						<code>
+							//Mouse over of existing data.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> No Notes</p>
+					</notes>
+				</section>
+
+
+
+
+				<section>
+					<h1>Finally: Telling a story with data.</h1>
+				    <notes class="notes">
+					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
+					</notes>
+				</section>
+
+
+
+				<section>
+					<h1 style="margin-top:-75px;">9. Using an interaction to change data.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder: Interactive visulization for rebalancing a portfolio.</i>
+					<div>
+					<pre>
+						<code>
+							//Show how we pull together the existing techniques to demonstrate portfolio rebalancing.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p>Demonstrate how we .</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1 style="margin-top:-75px;">10. Hooking interactions into an API.</h1>
+					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<i>Placeholder: Gathering more details about a part of the visualization.</i>
+					<div>
+					<pre>
+						<code>
+							//Show how to get a more detailed view of an exisiting position.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p>Explain how the expanded details makes the visulztion actionable by showing positions that caused a specific change .</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1>Summation Slide.</h1>
+				    <notes class="notes">
+					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
+					</notes>
+				</section>
 
 			</div>
 
