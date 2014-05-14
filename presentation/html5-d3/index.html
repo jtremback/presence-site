@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="css/reveal.css">
 <!-- 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
  -->
+
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -40,6 +41,146 @@
 		<script src="js/vendor/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 
+		<link href="http://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet" type="text/css">
+
+		<style>
+
+		/* jeffy stylez */
+
+		#notes{
+			position:fixed;
+			bottom: 10px;
+			right: 0px;
+			z-index: 999;
+
+		}
+		.notes{
+			display: none;
+		}
+		.reveal h1{
+			margin-bottom: 1em;
+			font-size: 3em;
+		}
+
+		.reveal .slides {
+			text-align: left;
+		}
+
+		.reveal h1{
+			margin-bottom: 2em;
+		}
+
+		.reveal ol li, .reveal ul li{
+			margin-bottom: .5em;
+		}
+
+
+		/* xxxtine stylez */
+
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		.reveal h1 {
+			font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+			font-size: 4.6875em;
+			margin-bottom: 0.5em;
+			line-height: 1.25em;
+		}
+
+		.reveal section.code-example h1,
+		.reveal h2 {
+			font-family: Helvetica, Arial, sans-serif;
+			color: #555;
+			font-weight: 300;
+			font-size: 3.75em;
+			line-height: 1.25em;
+		}
+
+		.reveal h3 {
+			color: #777;
+			font-weight: 800;
+			font-size: 2.125em;
+			margin-bottom: 0.5em;
+			line-height: 1.25em;
+			padding-bottom: 0.5em;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.reveal p {
+			font-size: 1.875em;
+			line-height: 1.25em;
+			color: #999;
+		}
+
+		.reveal h1.bottomless,
+		.reveal h2.bottomless,
+		.reveal h3.bottomless {
+			margin-bottom: 0;
+		}
+
+		ul.bulletless {
+			list-style: none;
+			margin-left: 0;
+		}
+
+		.half,
+		.thirds {
+			width: 100%;
+		}
+
+		.half li {
+			width: 48%;
+			float: left;
+		}
+
+		.half li:first-child {
+			margin-right: 4%;
+		}
+
+		.thirds li {
+			float: left;
+			width: 30.6666666667%;
+		}
+
+		.thirds li:first-child {
+			margin-right: 4%;
+		}
+
+		.reveal ul li.right,
+		.thirds li:last-child {
+			float: right;
+		}
+
+		.box li {
+			box-sizing: border-box;
+			border: 2px solid #eee;
+			padding: 1.25em;
+		}
+
+		.reveal section.code-example h1 {
+			margin-top: -1em;
+		}
+
+		.reveal .two-row li {
+			margin-bottom: 1.875em;
+		}
+
+
+		#notes {
+			color: #FF5E99;
+			font-family: Georgia, Times, serif;
+			font-style: italic;
+			text-decoration: none;
+			padding: 0.625em;
+		}
+
+		#notes:before,
+		#notes:after {
+			content: "\2665";
+			padding: 0.3125em;
+		}
+
+		</style>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -48,11 +189,6 @@
 
 	<body>
 
-		<style>
-		body{
-			font-family: Arial, Helvetica, sans-serif;
-		}
-		</style>
 
 
 		<div class="reveal">
@@ -60,9 +196,9 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Experiments in d3:</h1>
+					<h1>Experiments in d3.js</h1>
 					<br>
-					<h2>Financial Visualization in the Enterprise.</h2>
+					<h2>Financial Visualization in the Enterprise</h2>
 				    <notes class="notes">
 
 				    <p>Intro Slide</p>
@@ -71,10 +207,16 @@
 				</section>
 
 				<section>
-					<h1>What you will learn:</h1>
-					<ul>
-						<li> <h3><b>Simple Thing:</b> How we built a dashboard of data visualizations for a hedge fund.</h3></li>
-						<li> <h3><b>Less Simple Thing:</b> How to use d3 to better communicate valuable data.</h3> </li>
+					<h1>What you will learn</h1>
+					<ul class="half bulletless">
+						<li>
+							<h3>A simple thing</h3>
+							<p>How we built a dashboard of data visualizations for a hedge fund.</p>
+						</li>
+						<li>
+							<h3>A less simple thing</h3>
+							<p>How to use d3 to better communicate valuable data.</p>
+						</li>
 					</ul>
 
 				    <notes class="notes">
@@ -85,9 +227,8 @@
 
 
 				<section>
-					<h1><b>Part I:</b>
-					<br>
-					What projects are right for d3.js?</h1>
+					<h2 class="bottomless">Part I:</h2>
+					<h1>What projects are right for d3.js?</h1>
 				    <notes class="notes">
 					    <p>Set the stage for the app and the requirmetns as an intro to the library.</p>
 					</notes>
@@ -95,10 +236,16 @@
 
 
 				<section>
-					<h1>Our Client's Goal:</h1>
-					<ul>
-						<li> <h3>Build a web application with a library of financial data visualization "widgets".</h3></li>
-						<li> <h3>Help users better understand their postions and portfolios.</h3></li>
+					<h1>High-Level Goals</h1>
+					<ul class="half bulletless">
+						<li>
+							<h3>1. Widget library</h3>
+							<p>Build a web application with a library of financial data visualization widgets.</p>
+						</li>
+						<li>
+							<h3>2. More usability</h3>
+							<p>Help users better understand their positions and portfolios.</p>
+						</li>
 					</ul>
 
 				    <notes class="notes">
@@ -109,12 +256,18 @@
 				</section>
 
 				<section>
-					<h1>What the client asked for:</h1>
+					<h1>Dev Requirements</h1>
 					<div>
-						<ul>
-							<li><h3>Fast load times.</h3></li>
-							<li><h3>Customizable Visualizations.</h3></li>
-							<li><h3>Well Documented (for pass off).</h3></li>
+						<ul class="thirds bulletless box">
+							<li>
+								<p>Fast load times across devices.</p>
+							</li>
+							<li>
+								<p>Customizable visualizations.</p>
+							</li>
+							<li>
+								<p>Well documented, for pass off.</p>
+							</li>
 						</ul>
 					</div>
 				    <notes class="notes">
@@ -125,13 +278,24 @@
 				</section>
 
 				<section>
-					<h1>Visualization Libraries (three types).</h1>
+					<h1>3 Types of Data Visualization Libraries</h1>
 					<br>
 					<div>
-						<ul>
-							<li><h3>All Inclusive Chart Library (i.e. Google Charts).</h3></li>
-							<li><h3>Boutique Graphs (rickshow.js, HighStock).</h3></li>
-							<li><h3>DOM Manipulation (d3, Raphael).</h3></li>
+						<ul class="bulletless thirds">
+							<li>
+								<h3>All-inclusive library</h3>
+								<p>Google Charts</p>
+							</li>
+							<li>
+								<h3>Boutique graph toolkit</h3>
+								<p>rickshaw.js</p>
+								<p>HighStock</p>
+							</li>
+							<li>
+								<h3>DOM Manipulation</h3>
+								<p>d3.js</p>
+								<p>Raphael</p>
+							</li>
 						</ul>
 					</div>
 				    <notes class="notes">
@@ -142,11 +306,11 @@
 				</section>
 
 				<section>
-					<h1>Why We Chose d3.js:</h1>
+					<h1>Why we chose d3.js:</h1>
 					<div>
-						<ul>
-							<li><h3>New data would require unforeseen visualizations.</h3></li>
-							<li><h3> Unique visualizations required.</h3></li>
+						<ul class="half box bulletless">
+							<li><p>New data would require unforeseen visualizations.</p></li>
+							<li><p>Unique, custom-designed visualizations needed.</p></li>
 						</ul>
 					</div>
 				    <notes class="notes">
@@ -155,11 +319,10 @@
 				</section>
 
 				<section>
-					<h1>JavaScript library for DOM manipulation. </h1><h1> Data Driven Documents.</h1>
+					<h1>d3.js</h1>
+					<h2>A JavaScript library for DOM manipulation &amp; data-driven documents.</h2>
 					<div>
-						<h3>
-							
-						</h3>
+
 					</div>
 				    <notes class="notes">
 					    <p> Redefine what d3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
@@ -168,13 +331,23 @@
 
 
 				<section>
-					<h1>The tech side of d3:</h1>
+					<h1>The tech of d3.js</h1>
 					<div>
-						<ul>
-							<li><h3>Responsive: Tablet and phone resolution supported.</h3></li>
-							<li><h3>Fast (i.e. 10+ graphs per page).</h3></li>
-							<li><h3>Custom anything (labels, units and interactions).</h3></li>
-							<li><h3>A solid community (Lots of examples and snippets to borrow from).</h3></li>
+						<ul class="box half two-row bulletless">
+							<li>
+								<h3>Responsive</h3>
+								<p>Tablet and phone resolutions supported.</p>
+							</li>
+							<li class="right">
+								<h3>Fast</h3>
+								<p>10+ graphs on 1 page with 0 lagging.</p></li>
+							<li>
+								<h3>Custom anything</h3>
+								<p>Make your own labels, units, and interactions.</p></li>
+							<li class="right">
+								<h3>A solid community</h3>
+								<p>Lots of examples and snippets to borrow from.</p>
+							</li>
 						</ul>
 					</div>
 				    <notes class="notes">
@@ -183,16 +356,15 @@
 				</section>
 
 				<section>
-					<h1><b>Part II:</b>
-					<br>
-					Making visualizations with your data.</h1>
+					<h2>Part II:</h2>
+					<h1>Making visualizations with your data.</h1>
 				    <notes class="notes">
 					    <p>Set the stage for a code filled romp throught building up a d3 visulzation from json to JS.</p>
 					</notes>
 				</section>
 
-				<section>
-					<h1 style="margin-top:-75px;">1. The view area.</h1>
+				<section class="code-example">
+					<h1>1. The view area.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Margin Example.</i>
 					<div>
@@ -221,8 +393,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">2. Labels and Legends.</h1>
+				<section class="code-example">
+					<h1>2. Labels and legends.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Legends and Labels.</i>
 					<div>
@@ -246,8 +418,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">3. Scaling everything to fit.</h1>
+				<section class="code-example">
+					<h1>3. Scaling everything to fit.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Scaling everything to fit.</i>
 					<div>
@@ -270,8 +442,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">4. Colors and contrast.</h1>
+				<section class="code-example">
+					<h1>4. Colors and contrast.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Coordinating colors across large data sets.</i>
 					<div>
@@ -292,8 +464,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">5. Adding a second plot.</h1>
+				<section class="code-example">
+					<h1>5. Adding a second plot.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: A second Datra set on the same graph.</i>
 					<div>
@@ -314,8 +486,8 @@
 					</notes>
 				</section>
 
-				<section>
-					<h1 style="margin-top:-75px;">5. Responsive Design.</h1>
+				<section class="code-example">
+					<h1>6. Responsive design.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Show the grpah dynamically resize.</i>
 					<div>
@@ -336,17 +508,16 @@
 
 
 				<section>
-					<h1><b>Part III:</b>
-					<br>
-					Taking It Beyond Static.</h1>
+					<h2>Part III:</h2>
+					<h1>Taking it beyond static.</h1>
 				    <notes class="notes">
 					    <p>Set the stage adding interactions to your data.  Make a seque to telling a better story</p>
 					</notes>
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">6. Dynamically inserting more data.</h1>
+				<section class="code-example">
+					<h1>7. Dynamically inserting more data.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: A second Datra set on the same graph</i>
 					<div>
@@ -368,8 +539,8 @@
 
 
 
-				<section>
-					<h1 style="margin-top:-75px;">7. Changing the data.</h1>
+				<section class="code-example">
+					<h1>8. Changing the data.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: Showing more data with interactions.</i>
 					<div>
@@ -389,8 +560,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">8. Reveal more with an interaction.</h1>
+				<section class="code-example">
+					<h1>9. Reveal more with an interaction.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder Image: An expanded view upon a click/touch.</i>
 					<div>
@@ -413,7 +584,8 @@
 
 
 				<section>
-					<h1>Finally: Telling a story with data.</h1>
+					<h2>Finally:</h2>
+					<h1>Telling a story with data.</h1>
 				    <notes class="notes">
 					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
 					</notes>
@@ -421,8 +593,8 @@
 
 
 
-				<section>
-					<h1 style="margin-top:-75px;">9. Using an interaction to change data.</h1>
+				<section class="code-example">
+					<h1>10. Interactive data.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder: Interactive visulization for rebalancing a portfolio.</i>
 					<div>
@@ -442,8 +614,8 @@
 				</section>
 
 
-				<section>
-					<h1 style="margin-top:-75px;">10. Hooking interactions into an API.</h1>
+				<section class="code-example">
+					<h1>11. Interactions and the API.</h1>
 					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<i>Placeholder: Gathering more details about a part of the visualization.</i>
 					<div>
@@ -458,7 +630,7 @@
 					</pre>
 					</div>
 				    <notes class="notes">
-					    <p>Explain how the expanded details makes the visulztion actionable by showing positions that caused a specific change .</p>
+					    <p>Explain how the expanded details makes the visualization actionable by showing positions that caused a specific change .</p>
 					</notes>
 				</section>
 
@@ -517,37 +689,6 @@
 	</body>
 </html>
 
-<style>
-	#notes{
-		position:fixed;
-		bottom: 10px;
-		right: 0px;
-		z-index: 999;
-
-	}
-	.notes{
-		display: none;
-	}
-	.reveal h1{
-		margin-bottom: 1em;
-		font-size: 3em;
-	}
-
-	.reveal .slides {
-		text-align: left;
-	}
-
-	.reveal h1{
-		margin-bottom: 2em;
-	}
-
-	.reveal ol li, .reveal ul li{
-		margin-bottom: .5em;
-	}
-
-
-
-</style>
 
 <script>
 injectNotes=function(){
