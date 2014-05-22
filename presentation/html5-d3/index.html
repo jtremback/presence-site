@@ -757,7 +757,7 @@ $( document ).ready(function() {
 
 		$('.example').each(function(i, div){
 
-			if(i==1 || i ==2)
+			if(i==1 || i ==2 || i ==3)
 			d3.json("json/data"+(i+1)+".json", function(data){
 				if (chart[i])
 			    	chart[i](div, data);
