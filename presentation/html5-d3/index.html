@@ -754,16 +754,13 @@ injectNotes=function(){
 * Sample use:
 */  
 $( document ).ready(function() {
-
 		$('.example').each(function(i, div){
-
-			if(i==1 || i ==2 || i==3 || i==4)
+			if(i==1 || i ==2 || i==3 || i==4 || i==5 || i==6)
 			d3.json("json/data"+(i+1)+".json", function(data){
 				if (chart[i])
 			    	chart[i](div, data);
 		    });
 		});
-
 });
 chart=[];
 </script>
