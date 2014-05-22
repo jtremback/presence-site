@@ -5,6 +5,8 @@ chart.push(function(div, data){
 	  data.forEach(function(d) {
 	    d.date = parseDate(d.date);
 	    d.close = Number(d.close)
+	    d.close2 = Number(d.close)
+	    d.close3 = Number(d.close)
 	  });
 
 
@@ -19,7 +21,7 @@ chart.push(function(div, data){
 
 	var y = d3.scale.linear()
 	    .range([height, 0])
-		.domain([0, d3.max(data, function(d) { return d.close; })]);
+		.domain([0, d3.max(data, function(d) { return d.close+d.close2+d.close3; })]);
 	
 	var xAxis = d3.svg.axis()
 	    .scale(x)
@@ -75,16 +77,19 @@ chart.push(function(div, data){
 
 
 
-	  // var area = d3.svg.area()
-	  //     .x(function(d) { return x(d.date); })
-	  //     .y0(height)
-	  //     .y1(function(d) { return y(d.close); });
+  // var area = d3.svg.area()
+  //     .x(function(d) { return x(d.date); })
+  //     .y0(height)
+  //     .y1(function(d) { return y(d.close); });
 
 
-	  var area = d3.svg.area()
-	      .x(function(d) { return x(d.date); })
-	      .y0(height)
-	      .y1(function(d) { return y(d.y); });
+  var area = d3.svg.area()
+      .x(function(d) { return x(d.date); })
+      .y0(function(d) { 
+      	return y(d.y0); })
+      .y1(function(d) { 
+      	return y(d.y0 + d.y); });
+
 
 
   var browser = svg.selectAll(".stacks")

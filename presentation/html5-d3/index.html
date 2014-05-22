@@ -425,7 +425,7 @@
 
 
 				<section class="code-example">
-					<h1>2. Labels and legends.</h1>
+					<h1>3. Labels and legends.</h1>
 					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
@@ -755,15 +755,15 @@ injectNotes=function(){
 */  
 $( document ).ready(function() {
 
-	 d3.json("data.json", function(data){
-
-
 		$('.example').each(function(i, div){
-			if (chart[i])
-		    	chart[i](div, data);
+
+			if(i==1 || i ==2)
+			d3.json("json/data"+(i+1)+".json", function(data){
+				if (chart[i])
+			    	chart[i](div, data);
+		    });
 		});
 
-	});
 });
 chart=[];
 </script>
