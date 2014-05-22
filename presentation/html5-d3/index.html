@@ -52,6 +52,7 @@
 			bottom: 10px;
 			right: 0px;
 			z-index: 999;
+			display: none;
 
 		}
 		.notes{
@@ -179,7 +180,16 @@
 			content: "\2665";
 			padding: 0.3125em;
 		}
+	
+		.axis path, .axis line {
+			fill: none;
+			stroke: #000;
+			shape-rendering: crispEdges;
+		}
 
+		pre{
+			display: none;
+		}
 		</style>
 
 		<!--[if lt IE 9]>
@@ -207,7 +217,7 @@
 				    2) who are you
 				    3) show pretty example
 				    4) talk about d3.
-				    5)
+				    
 					        
 					</notes>
 				</section>
@@ -228,6 +238,18 @@
 				    <notes class="notes">
 					    <p>Show that we will cover code examples of a simple app and...</p>
 					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>d3.js: <i style="font-size:45px;">data-driven documents</i></h1>
+
+					<h2>A JavaScript library for DOM manipulation.</h2>
+					<div>
+
+					</div>
+				    <notes class="notes">
+					    <p> Redefine what d3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
 					</notes>
 				</section>
 
@@ -325,30 +347,6 @@
 				</section>
 
 				<section>
-					<h1>d3.js: <i style="font-size:45px;">data-driven documents</i></h1>
-
-					<h2>A JavaScript library for DOM manipulation.</h2>
-					<div>
-
-					</div>
-				    <notes class="notes">
-					    <p> Redefine what d3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
-					</notes>
-				</section>
-
-				<section>
-					<h1>Example Slide</h1>
-
-					<h2>A JavaScript library for DOM manipulation.</h2>
-					<div>
-
-					</div>
-				    <notes class="notes">
-					    <p> Redefine what d3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
-					</notes>
-				</section>
-
-				<section>
 					<h1>The tech of d3.js</h1>
 					<div>
 						<ul class="box half two-row bulletless">
@@ -382,25 +380,40 @@
 				</section>
 
 				<section class="code-example">
-					<h1>1. The view area.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Margin Example.</i>
+					<h1>1. The Data.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							
+
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
+				</section>
+
+				<section class="code-example">
+					<h1>2. The view area.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
 							//Properly Size and select margins;
-							var data = [4, 8, 15, 16, 23, 42];
+						    var margin = {top: 20, right: 20, bottom: 30,left: 50},
+						        width = 960 - margin.left - margin.right,
+						        height = 500 - margin.top - margin.bottom;
 
-							var x = d3.scale.linear()
-							    .domain([0, d3.max(data)])
-							    .range([0, 420]);
+						        svg.append("g")
+						         .attr("class", "x axis")
+						         .attr("transform", "translate(0," + height + ")")
 
-							d3.select("#piegraph")
-							  .selectAll("div")
-							    .data(data)
-							  .enter().append("div")
-							    .style("width", function(d) { return x(d) + "px"; })
-							    .text(function(d) { return d; });
+						        svg.append("g")
+						         .attr("class", "y axis")
+
 
 						</code>
 					</pre>
@@ -413,16 +426,26 @@
 
 				<section class="code-example">
 					<h1>2. Labels and legends.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Legends and Labels.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							//Use the Ledgends API to space and formate when.
+						//Define Your Axis.
+						    var xAxis = d3.svg.axis()
+						        .scale(x)
+						        .orient("bottom");
 
-							//
-							//Live Code Goes here
-							//
+						    var yAxis = d3.svg.axis()
+						        .scale(y)
+						        .orient("left")
+						        .tickFormat(formatPercent);
+						    
+						    //And Insert Them.
+						        svg.append("g")
+						            .call(xAxis);
+
+						        svg.append("g")
+						            .call(yAxis);
 
 						</code>
 					</pre>
@@ -438,17 +461,16 @@
 
 				<section class="code-example">
 					<h1>3. Scaling everything to fit.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Scaling everything to fit.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							//Use the built in scaling API to translate all values to the viewport
-							//Think of the extreme possibilies in your data!
+						//Use the built in scaling API for all elments
+						    var x = d3.time.scale()
+						        .range([0, width]);
 
-							//
-							//Live Code Goes here
-							//
+						    var y = d3.scale.linear()
+						        .range([height, 0]);
 						</code>
 					</pre>
 					</div>
@@ -462,16 +484,19 @@
 
 				<section class="code-example">
 					<h1>4. Colors and contrast.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Coordinating colors across large data sets.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							//d3's built in color singlton manages colors with thousands fo data types.
-
-							//
-							//Live Code Goes here
-							//
+					//d3's built in color singlton manages colors with thousands fo data types.
+						var color = d3.scale.category20();
+					         color.domain(d3.keys(data[0]).filter(function(key) {
+					            return key !== "date";
+					         }));
+					        svg.append("path")
+					            .style("fill", function(d) {
+					                return color(d.name);
+					         });
 						</code>
 					</pre>
 					</div>
@@ -484,16 +509,15 @@
 
 				<section class="code-example">
 					<h1>5. Adding a second plot.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: A second Datra set on the same graph.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							//A seond data set on top of an existing means sharing mny of the resources you have just applied.
-
-							//
-							//Live Code Goes here.
-							//
+							//Scaling with the Build in D3 function;
+						   	 svg.append("path")
+						   	 .style("fill", function(d) {
+					           return color(d.name);
+					                });
 						</code>
 					</pre>
 					</div>
@@ -506,16 +530,14 @@
 
 				<section class="code-example">
 					<h1>6. Responsive design.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Show the grpah dynamically resize.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
 							// Scaling the data for multiple views and for new data.
 
-							//
-							//Live Code Goes here.
-							//
+							<svg width="100%" height="500"><g transform="translate(50,20)">
+							
 						</code>
 					</pre>
 					</div>
@@ -536,16 +558,16 @@
 
 				<section class="code-example">
 					<h1>7. Dynamically inserting more data.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: A second Datra set on the same graph</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							// A seond data set on top of an existing means sharing mny of the resources you have just applied.
+							// Adding New Data with Transition
+							svg.insert().transition()
+							    .delay(function(d, i) { return i * 10; })
+							    .attr("y", function(d) { return y(d.y0 + d.y); })
+							    .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); });
 
-							//
-							//Live Code Goes here.
-							//
 						</code>
 					</pre>
 					</div>
@@ -559,16 +581,20 @@
 
 				<section class="code-example">
 					<h1>8. Changing the data.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: Showing more data with interactions.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
-							// Adding seond data set on top of an existing.
-
-							//
-							//Live Code Goes here.
-							//
+							// Adding Mouse over Effects
+						      .on("mouseover", function(d) {
+						          tooltip.transition()
+						               .duration(200)
+						               .style("opacity", .9);
+						          tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
+							        + ", " + yValue(d) + ")")
+						               .style("left", (d3.event.pageX + 5) + "px")
+						               .style("top", (d3.event.pageY - 28) + "px");
+						      })
 						</code>
 					</pre>
 					</div>
@@ -580,8 +606,7 @@
 
 				<section class="code-example">
 					<h1>9. Reveal more with an interaction.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder Image: An expanded view upon a click/touch.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
@@ -613,8 +638,7 @@
 
 				<section class="code-example">
 					<h1>10. Interactive data.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder: Interactive visulization for rebalancing a portfolio.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
@@ -634,8 +658,7 @@
 
 				<section class="code-example">
 					<h1>11. Interactions and the API.</h1>
-					<div class="venn" style="height: 500px; zoom: 0.80; text-align: center;"></div>
-					<i>Placeholder: Gathering more details about a part of the visualization.</i>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
 					<div>
 					<pre>
 						<code>
@@ -654,7 +677,11 @@
 
 
 				<section>
-					<h1>Summation Slide.</h1>
+					<h1>Thanks</h1>
+					<h2>Jeff Jenkins<h2>
+
+					<h2>precensepg.com<h2>
+
 				    <notes class="notes">
 					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
 					</notes>
@@ -668,6 +695,14 @@
 		<script src="js/reveal.min.js"></script>
 
 		<script>
+
+
+		$(window).keydown(function(e){
+			if (e.keyCode==16 || e.keyCode==17 || e.keyCode==91 )
+				$("#notes").css("display","block");
+			else
+				$("#notes").css("display","");
+		})
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -718,66 +753,31 @@ injectNotes=function(){
 * [ { name : x-axis-bar-label, value : N }, ...]
 * Sample use:
 */  
+$( document ).ready(function() {
 
-var data = [4, 8, 15, 16, 23, 42];
-
-var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, 420]);
-
-d3.select("#piegraph")
-  .selectAll("div")
-    .data(data)
-  .enter().append("div")
-    .style("width", function(d) { return x(d) + "px"; })
-    .text(function(d) { return d; });
-
-/**
-* A Venn . Required data format:
-* [ { name : x-axis-bar-label, value : N }, ...]
-* Sample use:
-*/  
+	 d3.json("data.json", function(data){
 
 
-chart = function(div){
+		$('.example').each(function(i, div){
+			if (chart[i])
+		    	chart[i](div, data);
+		});
 
-var w = 960,
-    h = 500;
- 
-var svg = d3.select(div).append("svg:svg")
-    .attr("width", w)
-    .attr("height", h);
- 
-svg.append("svg:circle")
-    .attr("cx", 350)
-    .attr("cy", 200)
-    .attr("r", 200)
-    .style("fill", "brown")
-    .style("fill-opacity", ".5");
- 
-svg.append("svg:circle")
-    .attr("cx", 550)
-    .attr("cy", 200)
-    .attr("r", 200)
-    .style("fill", "steelblue")
-    .style("fill-opacity", ".5");
- 
-svg.append("svg:circle")
-    .attr("cx", 450)
-    .attr("cy", 300)
-    .attr("r", 200)
-    .style("fill", "green")
-    .style("fill-opacity", ".5");
-
-}
-
-$('.venn').each(function(){
-
-	chart(this);
+	});
 });
-
+chart=[];
 </script>
-
+<script src="js/examples/1.js"></script>
+<script src="js/examples/2.js"></script>
+<script src="js/examples/3.js"></script>
+<script src="js/examples/4.js"></script>
+<script src="js/examples/5.js"></script>
+<script src="js/examples/6.js"></script>
+<script src="js/examples/7.js"></script>
+<script src="js/examples/8.js"></script>
+<script src="js/examples/9.js"></script>
+<script src="js/examples/10.js"></script>
+<script src="js/examples/10.js"></script>
 
 <!--<section>
 <h2>Part II : Let's make a chart!</h2>
