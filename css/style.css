@@ -5109,6 +5109,11 @@ section.black {
   color: #f7f6f5;
   font-weight: 200;
 }
+section.white {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 200;
+}
 hr.invis {
   border-color: transparent;
 }
