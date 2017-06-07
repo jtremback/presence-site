@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Experiments in D3 - Financial Visualization in the Enterprise</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+<!-- 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+ -->
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<script type="text/javascript" src="js/vendor/d3.js"></script>
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<script src="js/vendor/jquery-1.4.4.min.js" type="text/javascript"></script>
+		<script src="js/vendor/jquery.reveal.min.js" type="text/javascript"></script>
+
+    	<link rel="stylesheet" type="text/css" href="css/monokai_sublime.min.css">
+		<script src="js/vendor/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+
+		<link href="css/font.css" rel="stylesheet" type="text/css">
+
+		<style>
+
+		/* jeffy stylez */
+
+		#notes{
+			position:fixed;
+			bottom: 10px;
+			right: 0px;
+			z-index: 999;
+			display: none;
+
+		}
+		.notes{
+			display: none;
+		}
+		.reveal h1{
+			margin-bottom: 1em;
+			font-size: 3em;
+		}
+
+		.reveal .slides {
+			text-align: left;
+		}
+
+		.reveal h1{
+			margin-bottom: 2em;
+		}
+
+		.reveal ol li, .reveal ul li{
+			margin-bottom: .5em;
+		}
+
+
+		/* xxxtine stylez */
+
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		.reveal h1 {
+			font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+			font-size: 4.6875em;
+			margin-bottom: 0.5em;
+			line-height: 1.25em;
+		}
+
+		.reveal section.code-example h1,
+		.reveal h2 {
+			font-family: Helvetica, Arial, sans-serif;
+			color: #555;
+			font-weight: 300;
+			font-size: 3.75em;
+			line-height: 1.25em;
+		}
+
+		.reveal h3 {
+			color: #777;
+			font-weight: 800;
+			font-size: 2.125em;
+			margin-bottom: 0.5em;
+			line-height: 1.25em;
+			padding-bottom: 0.5em;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.reveal p {
+			font-size: 1.875em;
+			line-height: 1.25em;
+			color: #999;
+		}
+
+		.reveal h1.bottomless,
+		.reveal h2.bottomless,
+		.reveal h3.bottomless {
+			margin-bottom: 0;
+		}
+
+		ul.bulletless {
+			list-style: none;
+			margin-left: 0;
+		}
+
+		.half,
+		.thirds {
+			width: 100%;
+		}
+
+		.half li {
+			width: 48%;
+			float: left;
+		}
+
+		.half li:first-child {
+			margin-right: 4%;
+		}
+
+		.thirds li {
+			float: left;
+			width: 30.6666666667%;
+		}
+
+		.thirds li:first-child {
+			margin-right: 4%;
+		}
+
+		.reveal ul li.right,
+		.thirds li:last-child {
+			float: right;
+		}
+
+		.box li {
+			box-sizing: border-box;
+			border: 2px solid #eee;
+			padding: 1.25em;
+		}
+
+		.reveal section.code-example h1 {
+			margin-top: -1em;
+		}
+
+		.reveal .two-row li {
+			margin-bottom: 1.875em;
+		}
+
+
+		#notes {
+			color: #FF5E99;
+			font-family: Georgia, Times, serif;
+			font-style: italic;
+			text-decoration: none;
+			padding: 0.625em;
+		}
+
+		#notes:before,
+		#notes:after {
+			content: "\2665";
+			padding: 0.3125em;
+		}
+	
+		.axis path, .axis line {
+			fill: none;
+			stroke: #000;
+			shape-rendering: crispEdges;
+		}
+
+		pre{
+			display: none;
+		}
+		</style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Experiments in d3.js</h1>
+					<br>
+					<h2>Financial Visualization in the Enterprise</h2>
+				    <notes class="notes">
+
+				    <p>Intro Slide</p>
+
+				    1) Houskeeping
+				    2) who are you
+				    3) show pretty example
+				    4) talk about d3.
+				    
+					        
+					</notes>
+				</section>
+
+				<section>
+					<h1>What you will learn</h1>
+					<ul class="half bulletless">
+						<li>
+							<h3>A simple thing</h3>
+							<p>How we built a dashboard of data visualizations for a hedge fund.</p>
+						</li>
+						<li>
+							<h3>A less simple thing</h3>
+							<p>How to use d3 to better communicate valuable data.</p>
+						</li>
+					</ul>
+
+				    <notes class="notes">
+					    <p>Show that we will cover code examples of a simple app and...</p>
+					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>d3.js: <i style="font-size:45px;">data-driven documents</i></h1>
+
+					<h2>A JavaScript library for DOM manipulation.</h2>
+					<div>
+
+					</div>
+				    <notes class="notes">
+					    <p> Redefine what d3 is. Not a charting library but a way to present data in a web browser.  Each visualzation is bespoke (with lots of good patterns to copy from). The code and charts is as good as you make it.</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h2 class="bottomless">Part I:</h2>
+					<h1>What projects are right for d3.js?</h1>
+				    <notes class="notes">
+					    <p>Set the stage for the app and the requirmetns as an intro to the library.</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1>High-Level Goals</h1>
+					<ul class="half bulletless">
+						<li>
+							<h3>1. Widget library</h3>
+							<p>Build a web application with a library of financial data visualization widgets.</p>
+						</li>
+						<li>
+							<h3>2. More usability</h3>
+							<p>Help users better understand their positions and portfolios.</p>
+						</li>
+					</ul>
+
+				    <notes class="notes">
+					    <p>Start with the simple part... what are the best description of the apps function.</p>
+
+					    <p>That we will include ideas and practices for how to use data to communicate ideas.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>Dev Requirements</h1>
+					<div>
+						<ul class="thirds bulletless box">
+							<li>
+								<p>Fast load times across devices.</p>
+							</li>
+							<li>
+								<p>Customizable visualizations.</p>
+							</li>
+							<li>
+								<p>Well documented, for pass off.</p>
+							</li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p>Here is where we intoduce the clients req. for the types of graphs.  It's immportant to emphasize that interpiting this is important in selecting something that will grow with the project.</p>
+
+					    <p> Also the point the types of experiments that that require are introduced.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>3 Types of Data Visualization Libraries</h1>
+					<br>
+					<div>
+						<ul class="bulletless thirds">
+							<li>
+								<h3>All-inclusive library</h3>
+								<p>Google Charts</p>
+							</li>
+							<li>
+								<h3>Boutique graph toolkit</h3>
+								<p>rickshaw.js</p>
+								<p>HighStock</p>
+							</li>
+							<li>
+								<h3>DOM Manipulation</h3>
+								<p>d3.js</p>
+								<p>Raphael</p>
+							</li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p> Lots of options for creating data vis. But three basic catagoies prevail.</p>
+
+					    <p> Preconfigured, Specialized (Boutique) and scaffolding (clay).  The scaffolding is simply a tool for painting and moving shapes.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>Why we chose d3.js:</h1>
+					<div>
+						<ul class="half box bulletless">
+							<li><p>New data would require unforeseen visualizations.</p></li>
+							<li><p>Unique, custom-designed visualizations needed.</p></li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p> Here we need to emphasize that customization is the achilles heel of pre-configured graphing libraries.</p>
+					</notes>
+				</section>
+
+				<section>
+					<h1>The tech of d3.js</h1>
+					<div>
+						<ul class="box half two-row bulletless">
+							<li>
+								<h3>Responsive</h3>
+								<p>Tablet and phone resolutions supported.</p>
+							</li>
+							<li class="right">
+								<h3>Fast</h3>
+								<p>10+ graphs on 1 page with 0 lagging.</p></li>
+							<li>
+								<h3>Custom anything</h3>
+								<p>Make your own labels, units, and interactions.</p></li>
+							<li class="right">
+								<h3>A solid community</h3>
+								<p>Lots of examples and snippets to borrow from.</p>
+							</li>
+						</ul>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
+				</section>
+
+				<section>
+					<h2>Part II:</h2>
+					<h1>Making visualizations with your data.</h1>
+				    <notes class="notes">
+					    <p>Set the stage for a code filled romp throught building up a d3 visulzation from json to JS.</p>
+					</notes>
+				</section>
+
+				<section class="code-example">
+					<h1>1. The Data.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							
+
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
+				</section>
+
+				<section class="code-example">
+					<h1>2. The view area.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							//Properly Size and select margins;
+						    var margin = {top: 20, right: 20, bottom: 30,left: 50},
+						        width = 960 - margin.left - margin.right,
+						        height = 500 - margin.top - margin.bottom;
+
+						        svg.append("g")
+						         .attr("class", "x axis")
+						         .attr("transform", "translate(0," + height + ")")
+
+						        svg.append("g")
+						         .attr("class", "y axis")
+
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> </p>
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>3. Labels and legends.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+						//Define Your Axis.
+						    var xAxis = d3.svg.axis()
+						        .scale(x)
+						        .orient("bottom");
+
+						    var yAxis = d3.svg.axis()
+						        .scale(y)
+						        .orient("left")
+						        .tickFormat(formatPercent);
+						    
+						    //And Insert Them.
+						        svg.append("g")
+						            .call(xAxis);
+
+						        svg.append("g")
+						            .call(yAxis);
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					    <p> Because Pretty Matters</p>
+
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>3. Scaling everything to fit.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+						//Use the built in scaling API for all elments
+						    var x = d3.time.scale()
+						        .range([0, width]);
+
+						    var y = d3.scale.linear()
+						        .range([height, 0]);
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> Scaling is a simple as fiting a range of pixels to the max and min in a data set.</p>
+					    <p> With dyanmic data sets this wil become more of challenge. </p>
+
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>4. Colors and contrast.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+					//d3's built in color singlton manages colors with thousands fo data types.
+						var color = d3.scale.category20();
+					         color.domain(d3.keys(data[0]).filter(function(key) {
+					            return key !== "date";
+					         }));
+					        svg.append("path")
+					            .style("fill", function(d) {
+					                return color(d.name);
+					         });
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>5. Adding a second plot.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							//Scaling with the Build in D3 function;
+						   	 svg.append("path")
+						   	 .style("fill", function(d) {
+					           return color(d.name);
+					                });
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> Adding a 2nd plot mean both can use the same formating and scale but have different look.</p>
+					    <p> This will be important for when interactions will be introduced.</p>
+
+					</notes>
+				</section>
+
+				<section class="code-example">
+					<h1>6. Responsive design.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							// Scaling the data for multiple views and for new data.
+
+							<svg width="100%" height="500"><g transform="translate(50,20)">
+							
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> When adding new data for a dynamic graph this will be required.</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h2>Part III:</h2>
+					<h1>Taking it beyond static.</h1>
+				    <notes class="notes">
+					    <p>Set the stage adding interactions to your data.  Make a seque to telling a better story</p>
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>7. Dynamically inserting more data.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							// Adding New Data with Transition
+							svg.insert().transition()
+							    .delay(function(d, i) { return i * 10; })
+							    .attr("y", function(d) { return y(d.y0 + d.y); })
+							    .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); });
+
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> In Math Class.  Remeber what was the most important part of a graph? Labels... Still applies here</p>
+					    <p> Remind them that we will loop back to this simple example when labling becomes much more complicated.</p>
+					</notes>
+				</section>
+
+
+
+				<section class="code-example">
+					<h1>8. Changing the data.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							// Adding Mouse over Effects
+						      .on("mouseover", function(d) {
+						          tooltip.transition()
+						               .duration(200)
+						               .style("opacity", .9);
+						          tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
+							        + ", " + yValue(d) + ")")
+						               .style("left", (d3.event.pageX + 5) + "px")
+						               .style("top", (d3.event.pageY - 28) + "px");
+						      })
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> Basic methode for using </p>
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>9. Reveal more with an interaction.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							//Mouse over of existing data.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p> No Notes</p>
+					</notes>
+				</section>
+
+
+
+
+				<section>
+					<h2>Part III:</h2>
+					<h1>Telling a story with data.</h1>
+				    <notes class="notes">
+					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
+					</notes>
+				</section>
+
+
+
+				<section class="code-example">
+					<h1>10. Interactive data.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							//Show how we pull together the existing techniques to demonstrate portfolio rebalancing.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p>Demonstrate how we .</p>
+					</notes>
+				</section>
+
+
+				<section class="code-example">
+					<h1>11. Interactions and the API.</h1>
+					<div class="example" style="height: 500px; zoom: 0.80; text-align: center;"></div>
+					<div>
+					<pre>
+						<code>
+							//Show how to get a more detailed view of an exisiting position.
+
+							//
+							//Live Code Goes here.
+							//
+						</code>
+					</pre>
+					</div>
+				    <notes class="notes">
+					    <p>Explain how the expanded details makes the visualization actionable by showing positions that caused a specific change .</p>
+					</notes>
+				</section>
+
+
+				<section>
+					<h1>Thanks</h1>
+					<h2>Jeff Jenkins<h2>
+
+					<h2>precensepg.com<h2>
+
+				    <notes class="notes">
+					    <p>Set the stage with a problem about how we added a novel take on a cliet's data set.</p>
+					</notes>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+
+		$(window).keydown(function(e){
+			if (e.keyCode==16 || e.keyCode==17 || e.keyCode==91 )
+				$("#notes").css("display","block");
+			else
+				$("#notes").css("display","");
+		})
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear',//Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+<div id="myModalNotes" class="reveal-modal">
+     <h1>Slide Notes</h1>
+     <p class='content'>Any content could go in here.</p>
+     <a class="close-reveal-modal">&#215;</a>
+</div>
+<a id="notes" onclick="injectNotes()" href="#" data-reveal-id="myModalNotes">Slide Notes</a>
+
+	</body>
+</html>
+
+
+<script>
+injectNotes=function(){
+	var notes = $(Reveal.getCurrentSlide()).find('notes');
+	$('#myModalNotes .content').html(notes.html());
+}
+/**
+* A bar chart. Required data format:
+* [ { name : x-axis-bar-label, value : N }, ...]
+* Sample use:
+*/  
+$( document ).ready(function() {
+		$('.example').each(function(i, div){
+			if(i==1 || i ==2 || i==3 || i==4 || i==5 || i==6)
+			d3.json("json/data"+(i+1)+".json", function(data){
+				if (chart[i])
+			    	chart[i](div, data);
+		    });
+		});
+});
+chart=[];
+</script>
+<script src="js/examples/1.js"></script>
+<script src="js/examples/2.js"></script>
+<script src="js/examples/3.js"></script>
+<script src="js/examples/4.js"></script>
+<script src="js/examples/5.js"></script>
+<script src="js/examples/6.js"></script>
+<script src="js/examples/7.js"></script>
+<script src="js/examples/8.js"></script>
+<script src="js/examples/9.js"></script>
+<script src="js/examples/10.js"></script>
+<script src="js/examples/10.js"></script>
+
+<!--<section>
+<h2>Part II : Let's make a chart!</h2>
+<div id="piegraph">
+ <style>
+ #piegraph{
+ 	margin-top:200px;
+ }
+ #piegraph div {
+	  font: 10px sans-serif;
+	  background-color: steelblue;
+	  text-align: right;
+	  padding: 3px;
+	  margin: 1px;
+	  color: white;
+	}
+ </style>
+</section>-->
